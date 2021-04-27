@@ -1,0 +1,4 @@
+aspect raio div :
+https://dabblet.com/gist/2590942
+https://stackoverflow.com/questions/1495407/maintain-the-aspect-ratio-of-a-div-with-css
+

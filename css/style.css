@@ -1,0 +1,176 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+}
+
+.col-1 {width: 8.33%;}
+.col-2 {width: 16.66%;}
+.col-3 {width: 25%;}
+.col-4 {width: 33.33%;}
+.col-5 {width: 41.66%;}
+.col-6 {width: 50%;}
+.col-7 {width: 58.33%;}
+.col-8 {width: 66.66%;}
+.col-9 {width: 75%;}
+.col-10 {width: 83.33%;}
+.col-11 {width: 91.66%;}
+.col-12 {width: 100%;}
+
+[class*="col-"] {
+    float: left;
+    padding: 15px;
+    /* border: 1px solid blue; */
+}
+
+.row::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+.clear {
+    content: "";
+    clear: both;
+}
+
+
+
+.wrapper {
+    width: 95vw;
+    height: 100%;
+    background: red;
+    margin: 0 auto;
+    z-index: 0;
+
+}
+
+.column {
+    float: left;
+    padding: 15px;
+}
+
+.sideContent {
+    background: burlywood;
+    height: 90vh;
+    width: 25%;
+}
+
+.mapContainer {
+    background: lightgreen;
+    height: 90vh;
+    width: 75%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* .map {
+    background: lightsalmon;
+    height: 80vh;
+    width: 80vw;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+} */
+
+.pipe {
+    width: 100%;
+    height: 10%;
+    background: #C4C4C4;
+    border-radius: 33px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center ;
+}
+
+.vertical {
+    position: absolute;
+    transform: rotate(-90deg);
+    width: 16%;
+}
+
+#Pipe1 {
+    top: 15%;
+    left: -5.5%;
+}
+#Pipe2 {
+    top: 35%;
+    left: 89.5%;
+}
+#Pipe3 {
+    top: 55%;
+    left: -5.5%;
+}
+#Pipe4 {
+    top: 75%;
+    left: 89.5%;
+}
+
+.cell {
+    
+    width: 5.35%;
+    height: 95%;
+    border-radius: 100%;
+    background: rgba(255, 255, 255, 0.65);
+    z-index: 99;
+}
+
+
+header {
+    width: 100%;
+    height: 10vh;
+    background: hotpink;
+}
+
+
+
+.map{
+	width: 100%;
+	padding-bottom: 56.25%; /* 16:9 */
+	position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+	/* background: blue; */
+}
+
+
+/* div.stretchy-wrapper > div {
+    position: absolute;
+    top: 0; bottom: 0; left: 0; right: 0;
+  } */
+
+
+.map > div {
+	position: absolute;
+	top: 0; bottom: 0; left: 0; right: 0;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+	color: white;
+	font-size: 24px;
+	text-align: center;
+}
+
+
+
+/* 
+aside {
+    width: 20vw;
+    height: 100vw;
+    background: royalblue;
+    z-index: 100;
+}
+
+
+main {
+    background: indigo;
+}
+
+.map {
+    background: green;
+    width: 90%;
+    height: 70%;
+
+} */
