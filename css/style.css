@@ -8,6 +8,11 @@
 
 }
 
+a {
+    text-decoration: none;
+    color: black;
+}
+
 .col-1 {width: 8.33%;}
 .col-2 {width: 16.66%;}
 .col-3 {width: 25%;}
@@ -57,6 +62,7 @@
     background: burlywood;
     height: 90vh;
     width: 25%;
+    border-right:  solid black;
 }
 
 .mapContainer {
@@ -68,14 +74,42 @@
     align-items: center;
 }
 
-/* .map {
-    background: lightsalmon;
-    height: 80vh;
-    width: 80vw;
+.searchBar {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-} */
+    justify-content: space-between;
+    /* flex-wrap: wrap; */
+    height: 5vh;
+    width: 105%;
+}
+.searchBar::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+.searchBar > select {
+    width: 20%;
+    float: left;
+    color: #6c757d  ;
+}
+.searchBar > a {
+    width: 5vh;
+    height: 5vh;
+    float: left;
+    color: white;
+    border-radius: 5px;
+    background: #618C7C;
+    text-align: center;
+    line-height: 100%;
+    background-image: url("../images/plus.svg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 50%;
+}
+.searchBar > input[type="text"] {
+    width: 30%;
+    float: left;
+}
 
 .pipe {
     width: 100%;
@@ -121,6 +155,11 @@
     justify-content: center;
     align-items: center;
     text-align: center;
+    background-image: url("../images/beet.svg");
+    background-image: none;
+    background-size: 80%;
+    background-repeat: no-repeat;
+    background-position: center;
     /* line-height: 10px; */
 }
 
