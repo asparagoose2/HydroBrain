@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Orelega+One&display=swap');
+
+
 * {
     margin: 0;
     padding: 0;
@@ -114,8 +117,19 @@
     border-radius: 100%;
     background: rgba(255, 255, 255, 0.65);
     z-index: 99;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    /* line-height: 10px; */
 }
 
+.cell > label {
+    color: #0a0a0a;
+    margin-top: 150%;
+    font-family: 'Orelega One', cursive;
+    font-weight: normal;
+}
 
 header {
     width: 100%;
