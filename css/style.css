@@ -111,6 +111,11 @@ a {
     float: left;
 }
 
+.seachBarIcons {
+    height: 70%;
+    padding-top: 15%;
+}
+
 .pipe {
     width: 100%;
     height: 10%;
@@ -216,12 +221,14 @@ header {
 	text-align: center;
 }
 
-.sort   { 
+
+
+/* .sort   { 
     background-image:url(../images/sort.svg); 
     background-position-x: 15%;
     background-position-y: center;
     background-repeat: no-repeat; 
-}
+} */
 
 /* 
 aside {

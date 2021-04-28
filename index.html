@@ -14,18 +14,37 @@
         <header> HEAD</header>
         <section class="sideContent column">
             <section class="searchBar">
-                <input type="text" class="form-control" name="searchKey" placeholder="Search">
-                <select name="filter" class="form-control">
+                <input type="text" class="form-control w-50" name="searchKey" placeholder="Search">
+                <!-- <select name="filter" class="form-control">
                     <option disabled="" selected="" value=""> Filter </option>
                     <option value="sick">Sick</option>
                     <option value="ready">Ready to Harvest</option>
-                </select>
-                <select name="sort" class="form-control sort">
+                </select> -->
+                <div class="dropdown show">
+                    <a href="#" role="button"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <img src="images/sortArrow.svg" class="seachBarIcons" alt="filter">
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                      <a class="dropdown-item" href='index.html?filter="sick"'>sick</a>
+                      <a class="dropdown-item" href='index.html?filter="ready"'>Ready to Harvest</a>
+                    </div>
+                  </div>
+                <div class="dropdown show">
+                    <a href="#" role="button"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <img src="images/funnel.svg" class="seachBarIcons" alt="sort">
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                      <a class="dropdown-item" href='index.html?sort="age"'>Age</a>
+                      <a class="dropdown-item" href='index.html?sort="type"'>Type</a>
+                      <a class="dropdown-item" href='index.html?sort="health'>Health</a>
+                    </div>
+                  </div>
+                <!-- <select name="sort" class="form-control sort">
                     <option disabled="" selected="" value="">  </option>
                     <option value="age">Age</option>
                     <option value="Type">Type</option>
                     <option value="Health">Health</option>
-                </select>
+                </select> -->
                 <a href="addPlant.html"></a>
             </section>
         </section>
@@ -204,6 +223,9 @@
         <div class="clear"></div>
     </section>
     <script src="js/scripts.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </body>
 </html>
 <!-- <header></header>
