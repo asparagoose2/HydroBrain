@@ -168,6 +168,16 @@ a {
     margin-top: 150%;
     font-family: 'Orelega One', cursive;
     font-weight: normal;
+    user-select: none;
+}
+.cell > a {
+    color: #0a0a0a;
+    padding-top: 150%;
+    font-family: 'Orelega One', cursive;
+    font-weight: normal;
+    user-select: none;
+    width: 100%;
+    cursor: pointer;
 }
 
 header {
@@ -206,7 +216,12 @@ header {
 	text-align: center;
 }
 
-
+.sort   { 
+    background-image:url(../images/sort.svg); 
+    background-position-x: 15%;
+    background-position-y: center;
+    background-repeat: no-repeat; 
+}
 
 /* 
 aside {
