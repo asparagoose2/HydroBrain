@@ -2,3 +2,5 @@ aspect raio div :
 https://dabblet.com/gist/2590942
 https://stackoverflow.com/questions/1495407/maintain-the-aspect-ratio-of-a-div-with-css
 
+scroll bar:
+https://gist.github.com/spemer/a0e218bbb45433bd611e68446523a00b
