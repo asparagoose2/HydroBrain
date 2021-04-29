@@ -295,27 +295,27 @@ main {
 }
 
 /* total width */
-.listSection::-webkit-scrollbar {
+.scroll::-webkit-scrollbar {
     background-color: transparent;
     /* background-color: #fff; */
     width: 8px;
 }
 
 /* background of the scrollbar except button or resizer */
-.listSection::-webkit-scrollbar-track {
+.scroll::-webkit-scrollbar-track {
     /* background-color: #fff; */
     background-color: transparent;
 }
 
 /* scrollbar itself */
-.listSection::-webkit-scrollbar-thumb {
+.scroll::-webkit-scrollbar-thumb {
     background-color: #babac0;
     border-radius: 16px;
     /* border: 4px solid #fff; */
 }
 
 /* set button(top and bottom of the scrollbar) */
-.listSection::-webkit-scrollbar-button {
+.scroll::-webkit-scrollbar-button {
     display:none;
 }
 
@@ -368,6 +368,51 @@ main {
 .breadcrumbsItem::after {
     content: " >";
     margin-right: 4px;
+}
+.objectContent {
+    display: flex;
+    width: 80%;
+    height: 35%;
+    margin: 0 auto;
+    padding-left: 5%;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.objectContent > span {
+    font-size: 22px;
+    display: block;
+    width: 35%;
+}   
+.objectContent > span:last-of-type {
+    width: 100%;
+}
+.objectContent > span > label {
+    font-weight: 500;
+}   
+
+.objectButtons {
+    width: 70%;
+    margin: 0 auto 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+.objectButtons > button {
+    width: 130px;
+}
+
+.objectImage {
+    width: 80%;
+    height: 30%;
+    margin: 8% auto;
+    background: transparent;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.objectImage > img {
+    border-radius: 4%;
 }
 
 /* .sort   { 
