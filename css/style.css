@@ -319,6 +319,56 @@ main {
     display:none;
 }
 
+.sidebarTitle {
+    background: #363333;
+    width: 100%;
+    height: 85px;
+    color: white;
+    display: flex;
+    align-items: center;
+}
+
+.sidebarTitle > h1 {
+    line-height: 85px;
+    margin-left: 3%;
+}
+
+.plantIcon {
+    height: 65%;
+    margin-left: 4%;
+}
+
+.sidebarTitle > a > img {
+    height: 55px;
+    color: cornflowerblue;
+    /* width: 85px; */
+}
+
+.no-padding {
+    padding: 0;
+}
+
+.breadcrumbsSection {
+    margin-top: 15px;
+}
+
+.breadcrumbs {
+    list-style: none;
+    display: flex;
+    font-size: 17px;
+}
+
+.breadcrumbsItem:last-of-type {
+    font-weight: bold;
+}
+.breadcrumbsItem:last-of-type::after {
+    content: "";
+}
+
+.breadcrumbsItem::after {
+    content: " >";
+    margin-right: 4px;
+}
 
 /* .sort   { 
     background-image:url(../images/sort.svg); 
