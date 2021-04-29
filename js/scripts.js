@@ -8,6 +8,19 @@
 
 var objects = [];
 
+
+var isOverflown = function (element) {
+    return element.scrollHeight > element.clientHeight || element.scrollWidth > element.clientWidth;
+}
+
+var resizeScreen = function() {
+    // while(isOverflown(document.body))
+    while(document.body.scrollHeight > document.body.clientHeight)
+    {
+        $('body').css('width', $('body').width()-1);
+    }
+}
+
 for (let index = 0; index < 50; index++) {
     objects[index] = {"cell":index+1,"type":"brocoli"};   
 }
@@ -58,7 +71,12 @@ $(".cell").each( function() {
     },);
     
 changeFontSize();
-window.onresize = changeFontSize
+window.onresize = function() {
+    changeFontSize();
+    if(isOverflown(document.body)){
+        // resizeScreen();
+    }
+}
 
 // $($('.sort')[0]).css({
 //     style: 'btn-primary',
