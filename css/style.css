@@ -39,6 +39,7 @@ a {
 .clear {
     content: "";
     clear: both;
+    display: table;
 }
 
 
@@ -76,16 +77,19 @@ a {
 .searchBar {
     display: flex;
     justify-content: space-between;
+    margin-top: 10px;
     /* flex-wrap: wrap; */
-    height: 5vh;
-    width: 105%;
+    padding-left: 1%;
+    padding-right: 3%;
+    height: 40px;
+    width: 100%;
     align-items: center;
 }
-.searchBar::after {
+/* .searchBar::after {
     content: "";
     clear: both;
     display: table;
-}
+} */
 
 .searchBar > select {
     width: 20%;
@@ -93,8 +97,8 @@ a {
     color: #6c757d  ;
 }
 .searchBar > a {
-    width: 3vh;
-    height: 3vh;
+    width: 38px;
+    height: 38px;
     float: left;
     color: white;
     border-radius: 5px;
@@ -111,16 +115,16 @@ a {
     float: left;
     background-image: url(../images/searchIcon.svg);
     background-repeat: no-repeat;
-    text-indent: 3vh;
+    text-indent: 40px;
     font-size: 20px;
-    background-size: 2vh;
+    background-size: 22px;
     background-position-y: center;
     background-position-x: 10px;
 
 }
 
 .seachBarIcons {
-    height: 2.5vh;
+    height: 38px;
     padding-top: 15%;
 }
 
@@ -239,13 +243,13 @@ main {
     list-style: none;
     padding: 0;
     width: 97%;
-    margin-top: 3.2vh;
+    margin-top: 20px;
     /* background: #C4C4C4; */
     font-family: 'Roboto', sans-serif;
 }
 .plantListItem {
-    margin-top: 1.5vh;
-    height: 3vh;
+    margin-top: 18px;
+    height: 40px;
 }
 
 .plantListItem > a{
