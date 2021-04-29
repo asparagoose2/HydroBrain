@@ -1,6 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Orelega+One&display=swap');
-
-
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500&display=swap');
 * {
     margin: 0;
     padding: 0;
@@ -59,7 +58,7 @@ a {
 }
 
 .sideContent {
-    background: burlywood;
+    background: #EEEEEE;
     height: 90vh;
     width: 25%;
     border-right:  solid black;
@@ -68,7 +67,7 @@ a {
 .mapContainer {
     background: lightgreen;
     height: 90vh;
-    width: 75%;
+    width: 95%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -80,6 +79,7 @@ a {
     /* flex-wrap: wrap; */
     height: 5vh;
     width: 105%;
+    align-items: center;
 }
 .searchBar::after {
     content: "";
@@ -93,8 +93,8 @@ a {
     color: #6c757d  ;
 }
 .searchBar > a {
-    width: 5vh;
-    height: 5vh;
+    width: 3vh;
+    height: 3vh;
     float: left;
     color: white;
     border-radius: 5px;
@@ -109,10 +109,18 @@ a {
 .searchBar > input[type="text"] {
     width: 30%;
     float: left;
+    background-image: url(../images/searchIcon.svg);
+    background-repeat: no-repeat;
+    text-indent: 3vh;
+    font-size: 20px;
+    background-size: 2vh;
+    background-position-y: center;
+    background-position-x: 10px;
+
 }
 
 .seachBarIcons {
-    height: 70%;
+    height: 2.5vh;
     padding-top: 15%;
 }
 
@@ -191,6 +199,12 @@ header {
     background: hotpink;
 }
 
+main {
+    width: 75%;
+    float: left;
+    display: flex;
+    justify-content: center;
+}
 
 
 .map{
@@ -220,6 +234,55 @@ header {
 	font-size: 24px;
 	text-align: center;
 }
+
+.plantsList {
+    list-style: none;
+    padding: 0;
+    width: 97%;
+    margin-top: 3.2vh;
+    /* background: #C4C4C4; */
+    font-family: 'Roboto', sans-serif;
+}
+.plantListItem {
+    margin-top: 1.5vh;
+    height: 3vh;
+}
+
+.plantListItem > a{
+    /* width: 89%; */
+    height: 100%;
+    /* background: #6c757d; */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.plantListItem > a:hover {
+    color: black;
+    font-size: 10px;
+    border-radius: 5px;
+    background: #cececead;
+}
+
+.plantListItem > a > img{
+    height: 110%;
+}
+
+.plantListName {
+    display: flex;
+    align-items: center;
+    width: 50%;
+    font-size: 26px;
+    font-weight: 400;
+}
+
+.plantListInfo {
+    /* height: 100%; */
+    text-align: center;
+    font-weight: 300;
+    font-size: 18px;
+    color: #343a40;
+}
+
 
 
 
