@@ -218,7 +218,6 @@ main {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-	/* background: blue; */
 }
 
 
@@ -244,14 +243,14 @@ main {
     overflow-y: scroll;
     margin-top: 20px;
     direction: rtl;
+    display: flex;
+    justify-content: center;
 }
 
 .plantsList {
     list-style: none;
     padding: 0;
-    width: 97%;
-    /* height: 92%; */
-    /* background: #C4C4C4; */
+    width: 92%;
     font-family: 'Roboto', sans-serif;
     direction: ltr;
 }
