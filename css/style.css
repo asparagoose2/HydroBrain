@@ -773,8 +773,4 @@ main {
         white-space: nowrap;
         visibility: hidden;
     }
-    #logo {
-        margin-left: 25px;
-        margin-bottom: 8px;
-    }
 }
