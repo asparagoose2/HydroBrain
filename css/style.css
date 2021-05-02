@@ -180,9 +180,17 @@ body {
     text-align: center;
     background-image: url("../images/beet.svg");
     background-image: none;
-    background-size: 80%;
+    background-size: 70%;
     background-repeat: no-repeat;
     background-position: center;
+}
+
+.cell:hover {
+    background: white;
+    background-repeat: no-repeat;
+    background-size: 85%;
+    background-position: center;
+    box-shadow: 0 0 10px rgb(224, 224, 224);
 }
 
 .cell > label {

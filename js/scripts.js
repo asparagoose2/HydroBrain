@@ -11,6 +11,19 @@ var objects = [
     {"cell":22,"type":"brocoli"},
     {"cell":23,"type":"beet"},
     {"cell":24,"type":"cabage"},
+    {"cell":46,"type":"beet"},
+    {"cell":36,"type":"brocoli"},
+    {"cell":39,"type":"cauliflower"},
+    {"cell":33,"type":"lettuce"},
+    {"cell":17,"type":"eggplant"},
+    {"cell":15,"type":"lettuce"},
+    {"cell":5,"type":"spinach"},
+    {"cell":4,"type":"strawberry"},
+    {"cell":2,"type":"tomato"},
+    {"cell":3,"type":"brocoli"},
+    {"cell":1,"type":"beet"},
+    {"cell":42,"type":"cabage"},
+
     {"cell":41,"type":"cauliflower"}
 ];
 
@@ -31,17 +44,6 @@ var sideBarBtnToggle = function() {
         $(".sideContent").css("visibility","hidden");
         moveObject($("#sideBarBtn"),"0%","0%");
         $('img',"#sideBarBtn").attr("src","images/rightChevron.svg");
-    }
-}
-
-var isOverflown = function (element) {
-    return element.scrollHeight > element.clientHeight || element.scrollWidth > element.clientWidth;
-}
-
-var resizeScreen = function() {
-    while(document.body.scrollHeight > document.body.clientHeight)
-    {
-        $('body').css('width', $('body').width()-1);
     }
 }
 
