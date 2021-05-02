@@ -75,7 +75,12 @@ var closeNav = function() {
 }
 
 $("#sideBarBtn").on("click", sideBarBtnToggle);
-
+$("#plantBtn").on("click",()=> {
+    $($(".alert")[0]).removeClass("hide");
+});
+$("#harvestBtn").on("click",()=> {
+    $($(".alert")[0]).removeClass("hide");
+});
 $("body").on("click", closeNav);
 $(".burgerMenu").click(function(e) {
     e.stopPropagation();
