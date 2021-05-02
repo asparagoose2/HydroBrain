@@ -527,7 +527,7 @@ main {
 }
 
 .tasks {
-    width: 50%;
+    width: 100%;
     margin-top: 8vh;
 }
 
@@ -570,12 +570,149 @@ main {
     font-weight: 300;
 }
 
+.homeCard {
+    display: inline-block;
+    color: black;
+    background: #eeeeee;
+    padding: 14px;
+    margin-left: 10px;
+    margin-bottom: 7px;
+    text-decoration: none;
+    border-radius: 10px;
+    height: 10em;
+    min-width: 14em;
+    margin-top: 2em;
+}
+
+.homeCard > h3 {
+    text-transform: uppercase;
+    margin-top: -2.2em;
+    font-size: 1.3em;
+}
+
+.stat {
+    /* width: 100%; */
+    /* height: 100%; */
+    text-align: center;
+    font-size: 5em;
+    margin: 1em auto;
+    /* line-height: 3em; */
+}
+.stat > span {
+    font-size: 0.4em;
+    line-height: 2px;
+}
+
+.waterVal {
+    display: grid;
+    position: relative;
+    width: 100%;
+    height: 85%;
+    margin-left: 10%;
+    margin-top: 10%;
+
+    grid-template-columns: 2fr 1fr;
+    align-content: space-between;
+}
+
+.liveView {
+    /* min-width: calc(14em * 2 + 20px); */
+    /* margin-top: 0; */
+    grid-column-start: 2;
+    grid-column-end: 4;
+    background-image: url("../images/Ripe-eggplant.jpg");
+    background-position-y: 50%;
+    background-position-x: 50%;
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+
+.gaugeSec{
+    min-width: calc(14em * 3 + 30px);
+    grid-column-start: 1;
+    grid-column-end: 4;
+    height: 17em;
+    /* display: grid; */
+    /* justify-content: space-around; */
+    /* grid-template-columns: 30% 30% 30%; */
+}
+
+.homeStats {
+    width: 48%;
+    display: grid;
+    grid-template-columns: repeat(3, 33%);
+    grid-template-rows: repeat(3, 33%);
+    gap: 10px;
+}
+
+.homeStats > .homeCard {
+    height: 17em;
+}
+
 .weather {
     margin-top: 8vh;
-    width: 50%;
-    position: absolute; 
+    width: 100%;
+    /* position: absolute;  */
 
 }
+
+.homeWrapper {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    align-items: center;
+    /* margin: 1em; */
+    margin: 1.2em auto;
+    /* margin-left: 2em; */
+    width: 98%;
+}
+
+.test {
+    width: 100px;
+}
+
+.gaugeSec > div {
+    display: grid;
+    grid-template-columns: 33% 33% 33%;
+    grid-template-rows: 90% 10%;
+    height: 17em;
+    align-items: center;
+}
+
+.gaugeLable {
+    /* position: absolute; */
+    margin-bottom: 8em;
+    font-size: larger;
+    text-align: center;
+}
+
+
+/* ..................... */
+.gauge-container {
+    width: 80%;
+    margin: 0 auto;
+    margin-top: 4em;
+
+}
+  
+.gauge-container > .gauge > .dial {
+    stroke: #77777770;
+    stroke-width: 6;
+}
+  
+.gauge-container > .gauge > .value {
+    stroke: #618c7c;
+    stroke-width: 6;
+}
+ 
+.gauge-container > .gauge > .value-text {
+    fill: rgb(47, 227, 255);
+    font-family: sans, 'sans-serif';
+    font-weight: bold;
+    font-size: 0.6em;
+}
+/* ..................... */
+
 
 .welcomeSection > h1 {
     font-size: 3.2em;
@@ -612,7 +749,9 @@ main {
 }
 
 .homePage {
-    margin: 1em 2em;
+    /* margin: 1em 2em; */
+    float: left;
+    width: 49%;
 }
 
 .sidenav {
@@ -780,5 +919,67 @@ main {
         font-size: 0.9em;
         white-space: nowrap;
         visibility: hidden;
+    }
+
+    .homeStats {
+        display: flex;
+        flex-direction: column;
+        margin-right: 10px;
+    }
+
+    .stat {
+        margin: 0.4em auto;
+    }
+
+    .homeStats > .homeCard {
+        height: 10em;
+    }
+
+    .homePage {
+        width: 100%;
+        float: none;
+    }
+    .gaugeSec {
+        display: flex;
+        width: 100%;
+        min-width: 0;
+    }
+
+    .gaugeSec > div {
+        width: 100%;
+        position: absolute;
+        margin-top: -6em;
+        grid-template-rows: auto;
+        margin-left: -1em;
+    }
+
+    .gaugeLable {
+        position: absolute;
+        top: 10em;
+    }
+    .gaugeLable:nth-of-type(1) {
+        left: 12%;
+    }
+    .gaugeLable:nth-of-type(2) {
+        left: 39%;
+    }
+    .gaugeLable:nth-of-type(3) {
+        left: 75%;
+    }
+    
+}
+
+
+@media only screen and (max-width: 88em) {    
+    .homeWrapper {
+        display: block;
+    }
+    .homeStats {
+        margin-top: 6em;
+        width: 100%;
+    }
+    .homePage {
+        width: 100%;
+        float: none;
     }
 }
