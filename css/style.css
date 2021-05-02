@@ -898,6 +898,9 @@ main {
     .user {
         display: none;
     }
+    .searchBar {
+        width: 100%;
+    }
 }
 /* Phone */
 @media only screen and (max-width: 48em) {
