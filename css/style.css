@@ -4,13 +4,27 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-
+    user-select: none;
 }
 
 a {
     text-decoration: none;
     color: black;
 }
+a:hover {
+    color: rgb(97, 92, 92);
+
+}
+
+ nav a:hover {
+    color:#e1e4e9;
+    font-size: large;
+
+}
+.selected:hover {
+    color:#ffffff;
+    font-size: 1em;
+} 
 
 .col-1 {width: 8.33%;}
 .col-2 {width: 16.66%;}
@@ -28,7 +42,6 @@ a {
 [class*="col-"] {
     float: left;
     padding: 15px;
-    /* border: 1px solid blue; */
 }
 
 .row::after {
@@ -42,12 +55,12 @@ a {
     display: table;
 }
 
-
+body {
+    height: 100vh;
+}
 
 .wrapper {
-    width: 95vw;
-    height: 100%;
-    background: red;
+    height: fit-content;
     margin: 0 auto;
     z-index: 0;
 
@@ -60,15 +73,15 @@ a {
 
 .sideContent {
     background: #EEEEEE;
-    height: 90vh;
+    min-height: calc(100vh - 6em);
+    max-height: fit-content;
     width: 25%;
     border-right:  solid black;
 }
 
 .mapContainer {
-    background: lightgreen;
-    height: 90vh;
-    width: 95%;
+    height: calc(100vh - 6em);
+    width: 85%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -78,25 +91,19 @@ a {
     display: flex;
     justify-content: space-between;
     margin-top: 10px;
-    /* flex-wrap: wrap; */
     padding-left: 1%;
     padding-right: 3%;
     height: 40px;
     width: 100%;
     align-items: center;
 }
-/* .searchBar::after {
-    content: "";
-    clear: both;
-    display: table;
-} */
 
 .searchBar > select {
     width: 20%;
     float: left;
     color: #6c757d  ;
 }
-.searchBar > a {
+.plusBtn  {
     width: 38px;
     height: 38px;
     float: left;
@@ -162,7 +169,6 @@ a {
 }
 
 .cell {
-    
     width: 5.35%;
     height: 95%;
     border-radius: 100%;
@@ -177,7 +183,6 @@ a {
     background-size: 80%;
     background-repeat: no-repeat;
     background-position: center;
-    /* line-height: 10px; */
 }
 
 .cell > label {
@@ -189,18 +194,89 @@ a {
 }
 .cell > a {
     color: #0a0a0a;
-    padding-top: 150%;
+    padding-top: 180%;
     font-family: 'Orelega One', cursive;
     font-weight: normal;
     user-select: none;
     width: 100%;
     cursor: pointer;
 }
-
+	
 header {
+    padding-top: 7px;
     width: 100%;
-    height: 10vh;
-    background: hotpink;
+    height: 6em;
+    background: #618C7C;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+}
+
+.burgerMenu {
+    position: relative;
+    padding-left: 2%;
+}
+	
+nav {
+    align-items: center;
+    justify-content: space-between;
+    display: flex;
+    width: 25%;
+}
+	
+nav a {  
+    text-align: center;  
+    color: #c7c2c2;
+    font-size: 1em;
+}
+
+.selected {
+    color: white;
+}
+
+#logo {
+    background-image: url(../images/hydrologoWhite.png);
+    display: block;
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 235px;
+    height: 55px;
+}
+	
+span {
+    margin: 10px;
+}
+	
+.userName {
+    margin-right: 6%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: white;
+    font-size: 1.2em;
+}
+
+.user {
+    color:white;
+}
+
+.user:hover {
+    color: rgb(218, 209, 209);
+}
+
+.systemStatus {
+    display: inline-block;
+    margin-right: 3em;
+}
+
+.circle {
+    border-radius: 50%;
+    background-color:  #1fb427;
+    box-shadow: #09b103 0 -1px 7px 1px, inset #10c719 0 -1px 9px, #09b103 0 2px 12px;
+    width: 10px;
+    height: 10px;
+    display: inline-block;
 }
 
 main {
@@ -210,7 +286,6 @@ main {
     justify-content: center;
 }
 
-
 .map{
 	width: 100%;
 	padding-bottom: 56.25%; /* 16:9 */
@@ -219,13 +294,6 @@ main {
     flex-wrap: wrap;
     justify-content: space-between;
 }
-
-
-/* div.stretchy-wrapper > div {
-    position: absolute;
-    top: 0; bottom: 0; left: 0; right: 0;
-  } */
-
 
 .map > div {
 	position: absolute;
@@ -253,6 +321,7 @@ main {
     width: 92%;
     font-family: 'Roboto', sans-serif;
     direction: ltr;
+    height: calc(90vh - 140px);
 }
 .plantListItem {
     margin-top: 18px;
@@ -260,50 +329,49 @@ main {
 }
 
 .plantListItem > a{
-    /* width: 89%; */
     height: 100%;
-    /* background: #6c757d; */
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 .plantListItem > a:hover {
     color: black;
-    font-size: 10px;
     border-radius: 5px;
     background: #cececead;
 }
 
 .plantListItem > a > img{
-    height: 110%;
+    height: 100%;
 }
 
 .plantListName {
     display: flex;
     align-items: center;
     width: 50%;
-    font-size: 26px;
+    font-size: 1.4em;
     font-weight: 400;
 }
 
 .plantListInfo {
-    /* height: 100%; */
     text-align: center;
     font-weight: 300;
-    font-size: 18px;
+    font-size: 0.9em;
     color: #343a40;
+}
+
+.scroll {
+    overflow-y: scroll;
 }
 
 /* total width */
 .scroll::-webkit-scrollbar {
     background-color: transparent;
-    /* background-color: #fff; */
     width: 8px;
+    height: 8px;
 }
 
 /* background of the scrollbar except button or resizer */
 .scroll::-webkit-scrollbar-track {
-    /* background-color: #fff; */
     background-color: transparent;
 }
 
@@ -311,7 +379,6 @@ main {
 .scroll::-webkit-scrollbar-thumb {
     background-color: #babac0;
     border-radius: 16px;
-    /* border: 4px solid #fff; */
 }
 
 /* set button(top and bottom of the scrollbar) */
@@ -331,17 +398,18 @@ main {
 .sidebarTitle > h1 {
     line-height: 85px;
     margin-left: 3%;
+    margin-top: 10px;
+    font-size: 1.6em;
 }
 
 .plantIcon {
-    height: 65%;
+    height: 2.7em;
     margin-left: 4%;
 }
 
 .sidebarTitle > a > img {
     height: 55px;
     color: cornflowerblue;
-    /* width: 85px; */
 }
 
 .no-padding {
@@ -361,6 +429,7 @@ main {
 .breadcrumbsItem:last-of-type {
     font-weight: bold;
 }
+
 .breadcrumbsItem:last-of-type::after {
     content: "";
 }
@@ -369,30 +438,39 @@ main {
     content: " >";
     margin-right: 4px;
 }
+
+.object {
+    display: flex;
+    flex-direction: column;
+}
+
 .objectContent {
     display: flex;
     width: 80%;
-    height: 35%;
     margin: 0 auto;
     padding-left: 5%;
     justify-content: space-between;
     flex-wrap: wrap;
 }
+
 .objectContent > span {
     font-size: 22px;
     display: block;
     width: 35%;
-}   
+    float: left;
+} 
+
 .objectContent > span:last-of-type {
     width: 100%;
 }
+
 .objectContent > span > label {
     font-weight: 500;
 }   
 
 .objectButtons {
     width: 70%;
-    margin: 0 auto 0;
+    margin: 10% auto 0;
     display: flex;
     justify-content: space-between;
 }
@@ -404,7 +482,7 @@ main {
 .objectImage {
     width: 80%;
     height: 30%;
-    margin: 8% auto;
+    margin: 8% auto 4%;
     background: transparent;
     display: flex;
     justify-content: center;
@@ -413,31 +491,290 @@ main {
 
 .objectImage > img {
     border-radius: 4%;
+    width: 100%;
 }
 
-/* .sort   { 
-    background-image:url(../images/sort.svg); 
-    background-position-x: 15%;
-    background-position-y: center;
-    background-repeat: no-repeat; 
-} */
-
-/* 
-aside {
-    width: 20vw;
-    height: 100vw;
-    background: royalblue;
-    z-index: 100;
+#sideBarBtn111 {
+    z-index: 1000;
+    visibility: hidden;
+    margin-left: auto;
+    cursor: pointer;
 }
 
-
-main {
-    background: indigo;
+#sideBarBtn {
+    position: absolute;
+    left: 0;
+    z-index: 1000;
+    visibility: hidden;
+    cursor: pointer;
+    transition: 0.5s;
 }
 
-.map {
-    background: green;
-    width: 90%;
-    height: 70%;
+#sideBarBtn:hover {
+    left: 20px
+}
 
-} */
+#sideBarBtn > img {
+    height: 55px;
+}
+
+.tasks {
+    width: 50%;
+    margin-top: 8vh;
+}
+
+.tasksList {
+    overflow: auto;
+    display: flex;
+    flex-shrink: unset;
+    margin-top: 28px;
+}
+
+.tasks > h2 {
+    font-weight: 500;
+}
+
+.tasksList > a {
+    display: inline-block;
+    color: black;
+    background: #eeeeee;
+    padding: 14px;
+    margin-left: 10px;
+    margin-bottom: 7px;
+    text-decoration: none;
+    border-radius: 10px;
+    height: 10em;
+    min-width: 14em;
+}
+
+.tasksList > a:first-of-type {
+    margin-left: 0;
+}
+
+.tasksList > a > h1{
+    text-transform: uppercase;
+    font-size: 1.6em;
+    font-weight: 400;
+}
+
+.tasksList > a > p{
+    font-size: 1.1em;
+    font-weight: 300;
+}
+
+.weather {
+    margin-top: 8vh;
+    width: 50%;
+    position: absolute; 
+
+}
+
+.welcomeSection > h1 {
+    font-size: 3.2em;
+}
+
+.welcomeSection > h3 {
+    font-size: 1.5em;
+    color: slategrey;
+    font-weight: 400;
+}
+
+.google-weather {
+    position: relative;
+    left: -180px; 
+    top: -180px;
+    width: 100em; 
+    height: 10240px;
+    transform-origin: 180px 180px;
+    transition: 0.3s;
+    position: absolute;
+}
+.google-weather-crop {
+    width: calc(655px); 
+    height: calc(350px);
+    overflow: hidden;
+    transition: 0.3s;
+    position: absolute;
+}
+.google-weather-place {
+    width: 50%; 
+    height: 10vh;
+    margin-left: 200px;
+    margin-top: 200px;
+}
+
+.homePage {
+    margin: 1em 2em;
+}
+
+.sidenav {
+    height: 100%;
+    width: 30%;
+    position: fixed;
+    z-index: 1500;
+    top: 0;
+    left: 0;
+    background-color: #818181;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+    width: 0;
+}
+.sidenav a {
+    margin-top: 0.5em;
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #cfcfcf;
+    display: block;
+    transition: 0.3s;
+
+}
+.userNameB a {
+    font-size: 20px;
+}
+  
+.sidenav a:hover {
+    color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+.sidenav .selectedB {
+    font-size: 30px;
+    font-weight: bold;
+}
+
+#id21 {
+    border: 0.12em dashed black; 
+}
+
+/* Desktop */
+@media only screen and (min-width: 76em){
+    .burgerMenu{
+        display: none;
+    }
+    #logo {
+        margin-left: 1.5em;
+    }
+}
+/* Laptop */
+@media only screen and (max-width: 76em) {
+    .sideContent {
+        /* visibility: hidden; */
+        position: absolute;
+        width: 30vw;
+        z-index: 100;
+        width: 40vw;
+    }
+    main {
+        width: 100%;
+    }
+    #sideBarBtn {
+        visibility: visible;
+        transform: translate(33vw,0);
+    }
+    nav {
+        display: none;
+    }
+    .user {
+        display: none;
+    }
+    .system {
+        margin-right: 0;
+    }
+    #logo {
+        margin: auto;
+
+    }
+    .userNameB  {
+        position: absolute;
+        bottom: 50px;
+    }
+    .searchBar {
+        width: calc(100% - 55px);
+    }
+    .tasks {
+        width: 100%;
+    }
+    .weather {
+        width: 90%;
+    }
+}
+/* Tablet */
+@media only screen and (max-width: 60em) {
+    header {
+        width: 100%;
+    }
+    .object {
+        width: 95%;
+        margin: auto auto;
+    }
+    #sideBarBtn {
+        visibility: hidden;
+    }
+    .sideContent {
+        width: 100%;
+        visibility: visible;
+        border: hidden;
+        position: static;
+    }
+    main {
+        visibility: hidden;
+        position: absolute;
+    }
+    .wrapper {
+        width: 100%;
+    }
+    nav {
+        display: none;
+    }
+    .user {
+        display: none;
+    }
+}
+/* Phone */
+@media only screen and (max-width: 48em) {
+    .object {
+        width: 100%;
+    }
+    .sideContent {
+        width: 100%;
+        visibility: visible;
+        border: hidden;
+    }
+    main {
+        visibility: hidden;
+        position: absolute;
+    }
+    nav{
+        display: none;
+    }
+     .user{
+        display: none;
+    }
+    .circle {
+        visibility: visible;
+        position: absolute;
+        right: 40px;
+        top: 2.8em;     
+    }
+    .systemStatus {
+        float: right;
+        margin: 0;
+        margin-left: 1em;
+        font-size: 0.9em;
+        white-space: nowrap;
+        visibility: hidden;
+    }
+    #logo {
+        margin-left: 25px;
+        margin-bottom: 8px;
+    }
+}

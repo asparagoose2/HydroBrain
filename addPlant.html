@@ -7,23 +7,25 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css">
-    <title>ITEM</title>
+    <title>ADD PLANT</title>
 </head>
 <body>
     <section class="wrapper">
-        <header>
+        <header> 
             <div class="burgerMenu">
-            <div id="mySidenav" class="sidenav">
-                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-                <a href="home.html">Home</a>
-                <a class="selectedB" href="index.html">Plants</a>
-                <a href="#">Setting</a>
-              </div>
-              
-              <span style="font-size:30px;cursor:pointer;color: white;" onclick="openNav()">&#9776;</span>
-              
-           
-              </div> 
+                <div id="mySidenav" class="sidenav">
+                    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                    <a href="home.html">Home</a>
+                    <a class="selectedB" href="index.html">Plants</a>
+                    <a href="#">Setting</a>
+                    <section class= "userNameB">
+                        <a href="#"><img src="images/Agvella.svg"> &nbsp; Agvella</a>
+                         </section> 
+                  </div>
+                  
+                  <span style="font-size:30px;cursor:pointer; color: white;" onclick="openNav()">&#9776;</span>
+                  
+                  </div> 
             <a href="home.html" id="logo"></a>
             <nav>
                 <a href="home.html"><img src="images/home.svg"><br> Home</a>
@@ -31,42 +33,70 @@
                 <a  href="#"><img src="images/settings.svg"><br> Setting</a>
             </nav>
             <section class="userName">
-            <span class="circle"></span><span class="system">System Online</span>
-            <section ><a class="user" href="#"><img src="images/Agvella.svg"> &nbsp; Agvella</a></section>
+                <section class="systemStatus">
+                    <section class="circle"></section> &nbsp; System Online
+                </section>
+                <section ><a class="user" href="#"><img src="images/Agvella.svg"> &nbsp; Agvella</a></section>
             </section>  
         </header>
-        
         <section class="sideContent column no-padding">
             <section class="sidebarTitle">
                 <a href="index.html"> <img src="images/leftArrow.svg" alt="back"></a>
-                <img class="plantIcon" src="images/eggplant.svg" alt="back">
-                <h1 >Eggplant</h1>
-                <a id="sideBarBtn"><img src="images/x.svg" alt=""></a>
+                <img class="plantIcon" src="images/strawberry.svg" alt="back">
+                <h1 >Add Plant</h1>
+                <a id="sideBarBtn"><img src="images/x.svg"></a>
             </section>
             <section class="breadcrumbsSection">
                 <ol class="breadcrumbs">
                     <li class="breadcrumbsItem"><a href="index.html">plants</a></li>
-                    <li class="breadcrumbsItem">Eggplant</li>
+                    <li class="breadcrumbsItem">Add Plant</li>
                 </ol>
             </section>
-            <section class="object">
-                <section class="objectImage">
-                    <img src="images/Ripe-eggplant.jpg" alt="live photo">
-                </section>
-                <section class="objectContent">
-                    <span><label>Plant Type:</label><br>Eggplant</span>
-                    <span><label>Nickname:</label><br>Eggplant</span>
-                    <span><label>Location:</label><br>Cell #21</span>
-                    <span><label>Value:</label><br>2.8 $/kg</span>
-                    <span><label>Planted on:</label><br>12/01/21</span>
-                    <span><label>Age:</label><br>39 days old</span>
-                    <span><label>Status:</label><br>Healthy - Ready for harvest</span>
-                </section>
-                <section class="objectButtons">
-                    <button type="button" class="btn btn-dark btn-lg">Edit</button>
-                    <button type="button" class="btn btn-success btn-lg">Harvest</button>
-                </section>
+            <section class="objectImage">
+                <h5>This plant is recomended for you! 🎉</h5>
+                <img  class="objectImage"src="images/Strawberries.png" alt="live photo" ><br> <br>
+                <p><b>Lorem ipsum dolor sit amet, consectetur
+                    adipiscing elit. Nulla quam velit, vulputate eu
+                    pharetra nec, mattis ac neque. Duis vulputate
+                    commodo lectus</b></p>
             </section>
+
+            <!-- <section class="objectContent"> -->
+                <form action="#" class="objectContent">
+                    <span>Location:
+                        <select class="form-select w-100" name="cellNum">
+                            <option selected value="21">cell #21</option>
+                            <option value="22">cell #22</option>
+                            <option value="41">cell #41</option>
+                            <option value="45">cell #45</option>
+                        </select></span>    
+                        <span> Nickname:
+                            <input type="text" name="nickname" class="form-control w-100" id="floatingInput" value="Strawberry">
+                        </span>
+                        <span><label>Priority:</label><br><div class="form-check">
+                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="radioLow">
+                            <label class="form-check-label" for="radioLow">
+                                Low
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="radioAuto" checked>
+                            <label class="form-check-label" for="radioAuto">
+                                Auto
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="radioHigh">
+                            <label class="form-check-label" for="radioHigh">
+                                High
+                            </label>
+                        </div></span>
+                        <section class="objectButtons">
+                            <button type="submit" class="btn btn-success btn-lg w-100">Plant</button>
+                        </section>
+                </form>
+            <!-- </section> -->
+
         </section>
         <main>
         <section class="mapContainer column">
@@ -169,7 +199,7 @@
                         <section class="cell">
                             <a href="item.html?itemID=22">22</a>
                         </section>
-                        <section class="cell" id="id21">
+                        <section class="cell">
                             <a href="item.html?itemID=21">21</a>
                         </section>
                     </section>
