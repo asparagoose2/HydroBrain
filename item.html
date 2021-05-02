@@ -69,7 +69,11 @@
                 </div>
                 <section class="objectButtons">
                     <button type="button" class="btn btn-dark btn-lg">Edit</button>
-                    <button type="button" id="harvestBtn" class="btn btn-success btn-lg">Harvest</button>
+                    <form action="">
+                        <input type="hidden" name="cellNum" value="21">
+                        <input type="hidden" name="action" value="harvest">
+                        <button type="submit" id="harvestBtn" class="btn btn-success btn-lg">Harvest</button>
+                    </form>
                 </section>
             </section>
         </section>
