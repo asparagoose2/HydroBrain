@@ -55,7 +55,7 @@ var renderMap = function() {
         } else {
             index = (Math.floor(item["cell"]/10))*10 + (10-item["cell"]%10) -20;
         }
-        $($(".cell")[index]).css("background-image",'url("../images/'+item["type"]+'.svg'+'")');
+        $($(".cell")[index]).css("background-image",'url("images/'+item["type"]+'.svg'+'")');
     });
 }
 
