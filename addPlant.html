@@ -62,6 +62,7 @@
             </section>
 
                 <form action="#" class="objectContent">
+                    <input type="hidden" name="type" value="strawberry">
                     <span>Location:
                         <select class="form-select w-100" name="cellNum">
                             <option selected value="21">cell #21</option>
@@ -73,19 +74,19 @@
                             <input type="text" name="nickname" class="form-control w-100" id="floatingInput" value="Strawberry">
                         </span>
                         <span><label>Priority:</label><br><div class="form-check">
-                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="radioLow">
+                            <input class="form-check-input" type="radio" name="priority" id="radioLow" value="0">
                             <label class="form-check-label" for="radioLow">
                                 Low
                             </label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="radioAuto" checked>
+                            <input class="form-check-input" type="radio" name="priority" id="radioAuto" value="1" checked>
                             <label class="form-check-label" for="radioAuto">
                                 Auto
                             </label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="radioHigh">
+                            <input class="form-check-input" type="radio" name="priority" value="2" id="radioHigh">
                             <label class="form-check-label" for="radioHigh">
                                 High
                             </label>
