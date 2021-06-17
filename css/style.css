@@ -365,6 +365,7 @@ main {
     font-weight: 300;
     font-size: 0.9em;
     color: #343a40;
+    margin-left: auto;
 }
 
 .scroll {
