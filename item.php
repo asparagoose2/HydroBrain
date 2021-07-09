@@ -50,15 +50,12 @@
         header("Location:".$URL."dynamicList.php");
     }
 
-    $query  = "select count(*) num_of_likes from tb_likes_212 group by plant_id having plant_id=".$plant["plant_id"];
-    print_r($query);
+    $query  = "select first_name, count(*) num_of_likes from tb_likes_212 l inner join tb_users_212 u on l.user_id = u.user_id group by plant_id having plant_id=".$plant["plant_id"];
     $result = mysqli_query($connection, $query);
     $likes = mysqli_fetch_array($result, MYSQLI_BOTH);
-
-    // if(isset($_POST["action"]) == ) {
-    //     $redirect = '<meta http-equiv="refresh" content="3;url=item.php?plantCell='.$plant["cell"].'" >';
-    // }
-
+    
+    $query  = "select first_name, last_name from tb_likes_212 l inner join tb_users_212 u on l.user_id = u.user_id where plant_id=".$plant["plant_id"];
+    $likers = mysqli_query($connection, $query);
 ?>
 
 <!DOCTYPE html>
@@ -82,9 +79,10 @@
                     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
                     <a href="index.php">Home</a>
                     <a class="selectedB" href="dynamicList.php">Plants</a>
-                    <a href="#">Setting</a>
-                    <section class="userNameB">
+                    <a href="#">Settings</a>
+                    <section class="userNameB"> 
                     <?php echo '<a href="#"><img src="images/'.$_SESSION["user_first_name"].'.svg'.'"> &nbsp; '. $_SESSION["user_first_name"] .' </a>' ?>
+                    <a href="logout.php">Log Out</a>
                     </section>
                 </div>
 
@@ -93,9 +91,10 @@
             </div>
             <a href="index.php" id="logo"></a>
             <nav>
-                <a href="index.php"><img src="images/home.svg"><br> Home</a>
-                <a class="selected" href="dynamicList.php"> <img src="images/plants.svg"><br> Plants</a>
-                <a href="#"><img src="images/settings.svg"><br> Setting</a>
+                <a href="index.php"><svg><use xlink:href="images/navIcons.svg#home"></svg><br> Home</a>
+                <a class="selected" href="dynamicList.php"> <svg><use xlink:href="images/navIcons.svg#plants"></svg><br> My Plants</a>
+                <a href="allPlants.php"> <svg><use xlink:href="images/navIcons.svg#community"></svg><br> Community</a>
+                <a href="#"><svg><use xlink:href="images/navIcons.svg#settings"></svg><br> Settings</a>
             </nav>
             <section class="userName">
                 <section class="systemStatus">
@@ -132,7 +131,34 @@
                     <span><label>Planted on:</label><br><?php echo date("d/m/Y",strtotime($plant["planting_time"])) ?></span>
                     <span><label>Age:</label><br><?php echo floor((time()-strtotime($plant["planting_time"]))/(60*60*24))." days old" ?></span>
                     <span><label>Status:</label><br><?php echo ucfirst($plant["status"]) ?></span> 
-                    <span><label>Liked by: </label> <?php echo $likes ? $likes["num_of_likes"] : "0"  ?> </span>
+                    <span><label>Liked by:  <br> </label> 
+                    <!-- Calculate Number Of Likes -->
+                    <?php  
+                    if(!$likes) {
+                        echo "No one.. 😔" ;
+                     } else {
+                        $row = mysqli_fetch_assoc($likers);
+                        if($likes["num_of_likes"]<2) { // if only one like, just write user's first name
+                         
+                            echo $row["first_name"]; 
+                        } else { // more than 1 like, write user's forst name and write how many more like there are
+                            
+                            echo $row["first_name"]." and ".'
+                            <div style="display: inline-block;" class="dropdown">
+                            <a type="button" data-toggle="dropdown" href="#">'.$likes["num_of_likes"]-1 . " more </a>  ";
+                        }
+                    } 
+                    ?>
+                    <!-- Make a dropdown to list all the other likers names -->
+                    <div class="dropdown-menu" style="margin-top: 10px; max-height: 200px;overflow-y: auto;">
+                    <?php while($row = mysqli_fetch_assoc($likers)) {
+
+                            echo '<a class="dropdown-item" href="#">'.$row["first_name"]." ".$row["last_name"].'</a>';
+                        }
+                    ?> 
+                    </div>
+                </div></span>
+                    
                 </section>
                 <div class="alert alert-success w-75 <?php echo isset($update)?"":"hide" ?>" role="alert">
                     <?php echo $update? $update : "" ?>
