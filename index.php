@@ -7,19 +7,13 @@
     $query  = "SELECT * FROM tb_tasks_212 WHERE user_id='".$_SESSION["user_id"]."'";
     $result = mysqli_query($connection, $query);
     $tasks = mysqli_fetch_all($result, MYSQLI_BOTH);
-    $stats = array(
-        "ph" => "7.7",
-        "ec" => "0.6",
-        "temp" => "22",
-        "total_plants" => "43",
-        "ready_plants" => "6",
-        "health" => "93",
-        "issues" => 7,
-        "ph_level" => 10,
-        "fertilizer_level" => 33,
-        "water_level" => 79
-    );
-    date_default_timezone_set('Asia/Jerusalem');
+
+     
+    $query  = "select *, (select count(*) from tb_plants_212 where user_id ='".$_SESSION["user_id"]."') as total_plants, (select count(*) from tb_plants_212 where user_id ='".$_SESSION["user_id"]."' and tb_plants_212.status = 1) as ready_plants from tb_gardens_212 g";
+    $result = mysqli_query($connection, $query);
+    $stats = mysqli_fetch_array($result, MYSQLI_BOTH);
+    
+    date_default_timezone_set($_SESSION["time_zone"]);
 ?>
 
 <!DOCTYPE html>
@@ -35,35 +29,38 @@
 </head>
 <body>
     <section class="wrapper">
-        <header>
+    <header>
             <div class="burgerMenu">
-            <div id="mySidenav" class="sidenav" >
-                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-                <a class="selectedB" href="index.html">Home</a>
-                <a href="list.html">Plants</a>
-                <a href="#">Setting</a>
-                <section class= "userNameB">
-                    <a href="#"><img src="images/Agvella.svg"> &nbsp; Agvella</a>
-                     </section> 
-              </div>
-              
-              <span style="font-size:30px;cursor:pointer;color: white;" onclick="openNav()">&#9776;</span>
-              
-           
-              </div> 
-            <a href="index.html" id="logo"></a>
+                <div id="mySidenav" class="sidenav">
+                    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                    <a class="selectedB" href="index.php">Home</a>
+                    <a href="dynamicList.php">My Plants</a>
+                    <a href="allPlants.php">Community</a>
+                    <a href="#">Setting</a>
+                    <section class="userNameB">
+                    <?php echo '<a href="#"><img src="images/'.$_SESSION["user_first_name"].'.svg'.'"> &nbsp; '. $_SESSION["user_first_name"] .' </a>' ?>
+                    </section>
+                </div>
+
+                <span style="font-size:30px;cursor:pointer; color: white;" onclick="openNav()">&#9776;</span>
+
+            </div>
+            <a href="index.php" id="logo"></a>
             <nav>
-                <a class="selected" href="index.html"><img src="images/homes.svg"><br> Home</a>
-                <a  href="list.html"> <img src="images/plant.svg"><br> Plants</a>
-                <a  href="#"><img src="images/settings.svg"><br> Setting</a>
+                <a class="selected" href="index.php"><svg><use xlink:href="images/navIcons.svg#home"></svg><br> Home</a>
+                <a  href="dynamicList.php"> <svg><use xlink:href="images/navIcons.svg#plants"></svg><br> My Plants</a>
+                <a  href="allPlants.php"> <svg><use xlink:href="images/navIcons.svg#community"></svg><br> Community</a>
+                <a href="#"><svg><use xlink:href="images/navIcons.svg#settings"></svg><br> Setting</a>
             </nav>
             <section class="userName">
                 <section class="systemStatus">
-                    <section class="circle"></section> &nbsp; System Online
-                </section>
-            <section ><a class="user" href="#"><img src="images/Agvella.svg"> &nbsp; Agvella</a></section>
-            </section>  
-        </header>
+                    <?php echo
+                    '<section class="circle'.($_SESSION["system_status"]?"":" offline").
+                    '"></section> &nbsp; System '.($_SESSION["system_status"]?"Online":" Offline").'</section>' ?>
+
+                <section><?php echo '<a href="#" class="user"><img src="images/'.$_SESSION["user_first_name"].'.svg'.'"> &nbsp; '. $_SESSION["user_first_name"] .' </a>' ?></section>
+            </section>
+    </header>
         <section class="homeWrapper">
             <section class="homePage">
                 <span class="welcomeSection">
@@ -79,7 +76,7 @@
                     <section class="tasksList scroll">
                         <?php
                             foreach($tasks as &$task) {
-                                echo '<a href="task.php/?taskId='.$task["id"].'">'.
+                                echo '<a href="#">'.
                                 '<h1>'.strtoupper($task["title"]).'</h1>'.
                                 '<p>'.$task["info"].'</p>';
                             }
@@ -109,9 +106,9 @@
                             <h5>Temperature:</h5>
                             <?php echo "<h5>".$stats["temp"]."°C</h5>" ?>
                             <h5>pH Level:</h5>
-                            <?php echo "<h5>".$stats["ph"]."</h5>" ?>
+                            <?php echo "<h5>".$stats["ph_value"]."</h5>" ?>
                             <h5>Conductivuty:</h5>
-                            <?php echo "<h5>".$stats["ec"]."</h5>" ?>
+                            <?php echo "<h5>".$stats["ec_value"]."</h5>" ?>
                         </section>
                     </section>
                     <section class="homeCard liveView">

@@ -25,11 +25,12 @@ if(!empty($_POST["email"])) {
     
     if (is_array($row)) {
         // echo "authontication success!";
-        $_SESSION["user_id"] = $row["id"];
+        $_SESSION["user_id"] = $row["user_id"];
         $_SESSION["user_first_name"] = $row["first_name"];
         $_SESSION["user_last_name"] = $row["last_name"];
         $_SESSION["system_status"] = "Online";
-        header("Location:".$URL."dynamicList.php");
+        $_SESSION["time_zone"] = $_POST["timeZone"];
+        header("Location:".$URL."index.php");
     } else {
         $message = "authentication failed!";
     }
@@ -68,6 +69,7 @@ if(!empty($_POST["email"])) {
                 <input type="email" id="login" class="fadeIn second" name="email" placeholder="email">
                 <input type="password" id="password" class="fadeIn third" name="pass" placeholder="password">
                 <input type="submit" class="fadeIn fourth" value="Log In">
+                <input type="hidden" name="timeZone" value='Asia/Jerusalem'>
             </form>
 
             <!-- Remind Passowrd -->
@@ -83,7 +85,9 @@ if(!empty($_POST["email"])) {
 
         </div>
     </div>
-
+    <script>
+        
+    </script>
 </body>
 
 </html>

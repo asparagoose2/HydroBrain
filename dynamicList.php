@@ -24,8 +24,8 @@
             <div class="burgerMenu">
                 <div id="mySidenav" class="sidenav">
                     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-                    <a href="index.html">Home</a>
-                    <a class="selectedB" href="list.html">Plants</a>
+                    <a href="index.php">Home</a>
+                    <a class="selectedB" href="dynamicList.php">Plants</a>
                     <a href="#">Setting</a>
                     <section class="userNameB">
                     <?php echo '<a href="#"><img src="images/'.$_SESSION["user_first_name"].'.svg'.'"> &nbsp; '. $_SESSION["user_first_name"] .' </a>' ?>
@@ -35,10 +35,10 @@
                 <span style="font-size:30px;cursor:pointer; color: white;" onclick="openNav()">&#9776;</span>
 
             </div>
-            <a href="index.html" id="logo"></a>
+            <a href="index.php" id="logo"></a>
             <nav>
-                <a href="index.html"><img src="images/home.svg"><br> Home</a>
-                <a class="selected" href="list.html"> <img src="images/plants.svg"><br> Plants</a>
+                <a href="index.php"><img src="images/home.svg"><br> Home</a>
+                <a class="selected" href="dynamicList.php"> <img src="images/plants.svg"><br> Plants</a>
                 <a href="#"><img src="images/settings.svg"><br> Setting</a>
             </nav>
             <section class="userName">
@@ -55,44 +55,45 @@
                 <input type="text" class="form-control w-50" name="searchKey" placeholder="Search" id="search">
                 <div class="dropdown show">
                     <a href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <img src="images/sortArrow.svg" class="seachBarIcons" alt="filter">
+                        <img src="images/funnel.svg" class="seachBarIcons" alt="filter">
                     </a>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                        <a class="dropdown-item" href='list.html?filter="sick"'>sick</a>
-                        <a class="dropdown-item" href='list.html?filter="ready"'>Ready to Harvest</a>
+                        <a class="dropdown-item" id="filterSick" href='#'>Sick</a>
+                        <a class="dropdown-item" id="filterReady" href='#'>Ready to Harvest</a>
                     </div>
                 </div>
                 <div class="dropdown show">
                     <a href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <img src="images/funnel.svg" class="seachBarIcons" alt="sort">
+                        <img src="images/sortArrow.svg" class="seachBarIcons" alt="sort">
                     </a>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                        <a class="dropdown-item" href='list.html?sort="age"'>Age</a>
-                        <a class="dropdown-item" href='list.html?sort="type"'>Type</a>
-                        <a class="dropdown-item" href='list.html?sort="health'>Health</a>
+                        <a class="dropdown-item" id="sortAge" href='#'>Age</a>
+                        <a class="dropdown-item" id="sortType" href='#'>Type</a>
                     </div>
                 </div>
-                <a class="plusBtn" href="addPlant.html"></a>
+                <a class="plusBtn" href="addPlant.php"></a>
                 <a id="sideBarBtn"><img id="xBtn" src="images/xBlack.svg"></a>
             </section>
             <div class="clear"></div>
             <section class="listSection scroll">
-                <ul class="plantsList">
-                </ul>
+            <div class="loader">
+                    <div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+                </div>
             </section>
         </section>
         <main>
             <section class="mapContainer column">
                 <section class="map">
+                <div class="loader">
+                    <div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+                </div>
                 </section>
             </section>
         </main>
         <div class="clear"></div>
     </section>
     <script src="js/scripts.js"></script>
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-        crossorigin="anonymous"></script>
+    <script src="js/dynamicList.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
         integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
         crossorigin="anonymous"></script>
