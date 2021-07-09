@@ -16,14 +16,22 @@ a:hover {
 
 }
 
- nav a:hover {
+nav a:hover {
     color:#e1e4e9;
     font-size: large;
-
+}
+nav a:hover svg {
+    fill:#e1e4e9;
+    transform: scale(1.1);
+    transition-duration: 0.3s;
 }
 .selected:hover {
     color:#ffffff;
     font-size: 1em;
+} 
+.selected:hover svg {
+    fill:#ffffff;
+    transform: none;
 } 
 
 .col-1 {width: 8.33%;}
@@ -258,12 +266,14 @@ nav a {
     text-align: center;  
     color: #c7c2c2;
     font-size: 1em;
+    transition-duration: 0.3s;
 }
 
 nav svg {
     width: 45px;
     height: 45px;
     fill: #cccccc;
+    transition-duration: 0.3s;
 }
 
 .selected {
