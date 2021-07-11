@@ -62,6 +62,7 @@
 <html lang="en">
 <head>
     <?php echo isset($redirect)?$redirect:"" ?>
+    <link rel="icon" type="image/png" href="images/favicon.png"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <meta charset="UTF-8">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
@@ -69,7 +70,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css">
-    <title>ITEM</title>
+    <title>Plant · HydroBrain</title>
 </head>
 <body>
     <section class="wrapper">
@@ -79,9 +80,10 @@
                     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
                     <a href="index.php">Home</a>
                     <a class="selectedB" href="dynamicList.php">Plants</a>
+                    <a href="allPlants.php">Community</a>
                     <a href="#">Settings</a>
                     <section class="userNameB"> 
-                    <?php echo '<a href="#"><img src="images/'.$_SESSION["user_first_name"].'.svg'.'"> &nbsp; '. $_SESSION["user_first_name"] .' </a>' ?>
+                    <?php echo '<a href="profile.php"><img src="images/'.$_SESSION["user_img"].'"> &nbsp; '. $_SESSION["user_first_name"] .' </a>' ?>
                     <a href="logout.php">Log Out</a>
                     </section>
                 </div>
@@ -102,7 +104,15 @@
                     '<section class="circle'.($_SESSION["system_status"]?"":" offline").
                     '"></section> &nbsp; System '.($_SESSION["system_status"]?"Online":" Offline").'</section>' ?>
 
-                <section><?php echo '<a href="#" class="user"><img src="images/'.$_SESSION["user_first_name"].'.svg'.'"> &nbsp; '. $_SESSION["user_first_name"] .' </a>' ?></section>
+                <section>
+                <div class="dropdown">
+                    <a class="user" type="button" data-toggle="dropdown" href="#"><?php echo '<img src="images/'.$_SESSION["user_img"].'"> &nbsp;'.$_SESSION["user_first_name"].'</a>'; ?>
+                    <div class="dropdown-menu" style="margin-top: 10px;" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="profile.php">Profile</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" style="color: #dc3545;" href="logout.php">Log Out</a>
+                    </div>
+                </div>
             </section>
         </header>
         

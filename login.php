@@ -17,17 +17,17 @@ if(mysqli_connect_errno()) {
 }
 
 if(!empty($_POST["email"])) {
-    // echo "FORM SENT";
     $query  = "SELECT * FROM tb_users_212 WHERE email='".$_POST["email"]."' and password='". $_POST["pass"]."'";
-    // echo $query;
     $result = mysqli_query($connection, $query);
     $row = mysqli_fetch_array($result);
     
     if (is_array($row)) {
-        // echo "authontication success!";
         $_SESSION["user_id"] = $row["user_id"];
+        $_SESSION["email"] = $row["email"];
         $_SESSION["user_first_name"] = $row["first_name"];
         $_SESSION["user_last_name"] = $row["last_name"];
+        $_SESSION["location"] = $row["location"];
+        $_SESSION["user_img"] = $row["profile_pic"];
         $_SESSION["system_status"] = "Online";
         $_SESSION["time_zone"] = $_POST["timeZone"];
         header("Location:".$URL."index.php");
@@ -36,22 +36,18 @@ if(!empty($_POST["email"])) {
     }
 }
 
-
-
-
 ?>
-
-
 
 <head>
     <meta charset="UTF-8">
+    <link rel="icon" type="image/png" href="images/favicon.png"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <link rel="stylesheet" href="css/login.css">
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <title>Login</title>
+    <title>Login · HydroBrain</title>
 </head>
 
 <body>

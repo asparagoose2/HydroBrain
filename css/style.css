@@ -32,24 +32,14 @@ nav a:hover svg {
 .selected:hover svg {
     fill:#ffffff;
     transform: none;
-} 
+}
 
-.col-1 {width: 8.33%;}
-.col-2 {width: 16.66%;}
-.col-3 {width: 25%;}
-.col-4 {width: 33.33%;}
-.col-5 {width: 41.66%;}
-.col-6 {width: 50%;}
-.col-7 {width: 58.33%;}
-.col-8 {width: 66.66%;}
-.col-9 {width: 75%;}
-.col-10 {width: 83.33%;}
-.col-11 {width: 91.66%;}
-.col-12 {width: 100%;}
+.profile {
+    margin-top: 20px;
+}
 
-[class*="col-"] {
-    float: left;
-    padding: 15px;
+.h-300 {
+    height: 300px;
 }
 
 .row::after {
@@ -77,10 +67,19 @@ body {
 .listMenu{
     min-height: calc(100vh - 6em);
     max-height: fit-content;
-    width: 80%;
+    max-width: 1000px;
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 150px;
+    padding: 20px;
+}
+
+.sorticons {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 105px;
+    margin: 10px;
 }
 
 .column {
@@ -146,17 +145,6 @@ body {
     background-position-y: center;
     background-position-x: 10px;
 
-}
-
-.sortIcons{
-    display: flex;
-    justify-content: space-between;
-    padding-right: 28%;   
-}
-
-.sort{
-    padding-right: 30%;
-    padding-left: 20%;
 }
 
 .seachBarIcons {
@@ -341,10 +329,6 @@ main {
     justify-content: center;
 }
 
-.searchAllPlants{
-    width: 100%; 
-}
-
 .map{
 	width: 100%;
 	padding-bottom: 56.25%; /* 16:9 */
@@ -370,18 +354,18 @@ main {
     overflow-y: scroll;
     margin-top: 20px;
     direction: rtl;
-    display: flex;
+    /* display: flex;   ------------------------> changed by shoval */
     justify-content: flex-end;
 }
 
 .plantsList {
     list-style: none;
     padding: 0;
-    width: 92%;
-    max-width:600px;
+    /* width: 92%;
+    max-width:600px; */
     font-family: 'Roboto', sans-serif;
     direction: ltr;
-    height: calc(90vh - 140px);
+    /* height: calc(90vh - 140px); */
 }
 .plantListItem {
     justify-content: space-between;
@@ -435,6 +419,13 @@ main {
     font-size: 0.9em;
     color: #343a40;
     margin-left: auto;
+}
+
+.infoPlant{
+    width: 60%;  
+}
+section .plantListInfo {
+    align-items: center;
 }
 
 .scroll {
@@ -525,7 +516,7 @@ main {
 .objectContent {
     display: flex;
     width: 80%;
-    margin: 0 auto;
+    margin: 10px auto;
     padding-left: 5%;
     justify-content: space-between;
     flex-wrap: wrap;
@@ -584,8 +575,7 @@ main {
 
 .objectImage {
     width: 80%;
-    /* height: 30%; */
-    margin: 8% auto 4%;
+    margin: 10px auto 0px;
     background: transparent;
     display: flex;
     justify-content: center;
@@ -967,6 +957,11 @@ main {
         border: hidden;
         position: static;
     }
+
+    .allPlantListName {
+        width: 80%;
+    }
+
     main {
         visibility: hidden;
         position: absolute;
@@ -1018,6 +1013,18 @@ main {
         font-size: 0.9em;
         white-space: nowrap;
         visibility: hidden;
+    }
+    .h-300 {
+        height: auto;
+    }
+
+    .allPlantsMoreInfo {
+        margin-left: auto;
+        display: none !important;
+        text-align: center;
+    }
+    .allPlantListName {
+        width: 80%;
     }
 
     .homeStats {
@@ -1121,6 +1128,7 @@ main {
     height: 100%;
     display: flex;
     justify-content: center;
+    align-items: center;
 }
 
 .lds-roller {

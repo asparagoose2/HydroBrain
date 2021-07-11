@@ -16,77 +16,6 @@ $.ajax({
   renderList();
 });
 
-// httpRequest.open("GET", "getPlantsList.php");
-// httpRequest.send();
-// httpRequest.onload = function () {
-//   data = JSON.parse(this.responseText);
-//   renderMap();
-//   renderList();
-// };
-//  = {
-//   userId: 123,
-//   plants: [
-//     {
-//       id: 1,
-//       name: "",
-//       type: "eggplant",
-//       status: "string",
-//       cell: 3,
-//       priority: 1,
-//       datePlanted: 1623272400000,
-//       likes: [
-//         {
-//           id: 1,
-//           userId: 12,
-//           userName: "susu",
-//         },
-//         {
-//           id: 2,
-//           userId: 2,
-//           userName: "kuku",
-//         },
-//       ],
-//     },
-//     {
-//       id: 2,
-//       name: "tuti",
-//       type: "strawberry",
-//       status: "string",
-//       cell: 36,
-//       priority: 1,
-//       datePlanted: 1613272400000,
-//       likes: [],
-//     },
-//   ],
-// };
-// var objects = [
-//   { cell: 7, type: "beet" },
-//   { cell: 10, type: "brocoli" },
-//   { cell: 14, type: "cauliflower" },
-//   { cell: 19, type: "lettuce" },
-//   { cell: 21, type: "eggplant" },
-//   { cell: 28, type: "lettuce" },
-//   { cell: 48, type: "spinach" },
-//   { cell: 27, type: "strawberry" },
-//   { cell: 35, type: "tomato" },
-//   { cell: 22, type: "brocoli" },
-//   { cell: 23, type: "beet" },
-//   { cell: 24, type: "cabage" },
-//   { cell: 46, type: "beet" },
-//   { cell: 36, type: "brocoli" },
-//   { cell: 39, type: "cauliflower" },
-//   { cell: 33, type: "lettuce" },
-//   { cell: 17, type: "eggplant" },
-//   { cell: 15, type: "lettuce" },
-//   { cell: 5, type: "spinach" },
-//   { cell: 4, type: "strawberry" },
-//   { cell: 2, type: "tomato" },
-//   { cell: 3, type: "brocoli" },
-//   { cell: 1, type: "beet" },
-//   { cell: 42, type: "cabage" },
-//   { cell: 41, type: "cauliflower" },
-// ];
-
 var moveObject = function (obj, x, y) {
   $(obj).css("transform", "translate(" + x + "," + y + ")");
 };
@@ -137,7 +66,7 @@ var buildMap = function () {
     }
     pipe.appendTo(map);
   }
-  $(".map")[0].innerHTML = "";
+  $($(".map")[0]).html("");
   map.appendTo($(".map")[0]);
 };
 
@@ -222,7 +151,7 @@ var renderList = function (sort, searchKey) {
     listItem.appendTo(li);
     li.appendTo(list);
   });
-  $(".listSection")[0].innerHTML = "";
+  $($(".listSection")[0]).html("");
   list.appendTo($(".listSection")[0]);
   data = oldData;
 };
@@ -254,12 +183,28 @@ $(".burgerMenu").click(function (e) {
   e.stopPropagation();
 });
 
-$(".like").each((index, like) => {
-  like.addEventListener("click", () => {
-    if (!like.classList.contains("liked")) like.classList.add("liked");
-    else like.classList.remove("liked");
+var toggleLikes = function (action, plantid) {
+  console.log($("#11"));
+  console.log(action);
+  console.log(plantid);
+  $.ajax({
+    url: "http://localhost/alterLikes.php",
+    method: "post",
+    data: { action: action, plant_id: plantid },
+  }).then((res) => {
+    console.log("done");
   });
-});
+};
+
+var likeOnClick = function (elem) {
+  if (!elem.classList.contains("liked")) {
+    elem.classList.add("liked");
+    toggleLikes("insert", $(elem).attr("id"));
+  } else {
+    elem.classList.remove("liked");
+    toggleLikes("delete", $(elem).attr("id"));
+  }
+};
 
 window.onresize = function () {
   changeFontSize();
@@ -276,6 +221,5 @@ window.onresize = function () {
     sideBarBtnToggle();
   }
 };
-T;
 
 changeFontSize();

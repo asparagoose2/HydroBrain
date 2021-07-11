@@ -8,6 +8,7 @@
 ?>
 <head>
     <meta charset="UTF-8">
+    <link rel="icon" type="image/png" href="images/favicon.png"/>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -15,7 +16,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css">
-    <title>MAP</title>
+    <title>My Plants · HydroBrain</title>
 </head>
 
 <body>
@@ -26,9 +27,11 @@
                     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
                     <a href="index.php">Home</a>
                     <a class="selectedB" href="dynamicList.php">Plants</a>
-                    <a href="#">Setting</a>
-                    <section class="userNameB">
-                    <?php echo '<a href="#"><img src="images/'.$_SESSION["user_first_name"].'.svg'.'"> &nbsp; '. $_SESSION["user_first_name"] .' </a>' ?>
+                    <a href="allPlants.php">Community</a>
+                    <a href="#">Settings</a>
+                    <section class="userNameB"> 
+                    <?php echo '<a href="profile.php"><img src="images/'.$_SESSION["user_img"].'"> &nbsp; '. $_SESSION["user_first_name"] .' </a>' ?>
+                    <a href="logout.php">Log Out</a> 
                     </section>
                 </div>
 
@@ -37,9 +40,10 @@
             </div>
             <a href="index.php" id="logo"></a>
             <nav>
-                <a href="index.php"><img src="images/home.svg"><br> Home</a>
-                <a class="selected" href="dynamicList.php"> <img src="images/plants.svg"><br> Plants</a>
-                <a href="#"><img src="images/settings.svg"><br> Setting</a>
+                <a href="index.php"><svg><use xlink:href="images/navIcons.svg#home"></svg><br> Home</a>
+                <a class="selected" href="dynamicList.php"> <svg><use xlink:href="images/navIcons.svg#plants"></svg><br> My Plants</a>
+                <a href="allPlants.php"> <svg><use xlink:href="images/navIcons.svg#community"></svg><br> Community</a>
+                <a href="#"><svg><use xlink:href="images/navIcons.svg#settings"></svg><br> Settings</a>
             </nav>
             <section class="userName">
                 <section class="systemStatus">
@@ -47,7 +51,15 @@
                     '<section class="circle'.($_SESSION["system_status"]?"":" offline").
                     '"></section> &nbsp; System '.($_SESSION["system_status"]?"Online":" Offline").'</section>' ?>
 
-                <section><?php echo '<a href="#" class="user"><img src="images/'.$_SESSION["user_first_name"].'.svg'.'"> &nbsp; '. $_SESSION["user_first_name"] .' </a>' ?></section>
+                <section>
+                <div class="dropdown">
+                    <a class="user" type="button" data-toggle="dropdown" href="#"><?php echo '<img src="images/'.$_SESSION["user_img"].'"> &nbsp;'.$_SESSION["user_first_name"].'</a>'; ?>
+                    <div class="dropdown-menu" style="margin-top: 10px;" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="profile.php">Profile</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" style="color: #dc3545;" href="logout.php">Log Out</a>
+                    </div>
+                </div>
             </section>
         </header>
         <section class="sideContent column">
@@ -103,9 +115,3 @@
 </body>
 
 </html>
-<!-- <header></header>
-<aside></aside>
-<main>
-
-    
-</main> -->

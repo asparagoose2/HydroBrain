@@ -16,7 +16,9 @@ if($_POST['action']=='insert' ){
 
     $query=  'DELETE FROM tb_likes_212 WHERE user_id='.$_SESSION["user_id"].' and plant_id='. $_POST['plant_id'];
 } else {
-    header("HTTP/1.1 406".$_POST["plant_id"]);
+    header("HTTP/1.1 406".$_POST["action"]);
 }
 
- mysqli_query($connection, $query);
+mysqli_query($connection, $query);
+
+mysqli_close($connection);
