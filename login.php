@@ -79,3 +79,7 @@ if(!empty($_POST["email"])) {
 </body>
 
 </html>
+
+<?php
+    mysqli_close($connection);
+?>

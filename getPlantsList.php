@@ -23,3 +23,5 @@ $plantJSON = json_encode($plants);
 
 echo $plantJSON;
 
+mysqli_close($connection);
+
