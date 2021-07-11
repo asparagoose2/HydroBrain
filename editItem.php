@@ -1,14 +1,15 @@
 <?php 
     include "db.php";
+    include "config.php";
     session_start();
     if(!$_SESSION){
-        header("Location: http://localhost/login.php");
+        header("Location: ".$URL."/login.php");;
     }
     $query  = "select * from tb_plants_212 inner join tb_plant_type_212 using(type_id) where cell=".$_GET["plantCell"].' and user_id='.$_SESSION["user_id"];
     $result = mysqli_query($connection, $query);
     $plant = mysqli_fetch_array($result, MYSQLI_BOTH);
     if(!$plant) {
-        header("Location:".$URL."dynamicList.php");
+        header("Location:".$URL."/dynamicList.php");
     }
     $query  = "select cell from tb_plants_212 where user_id='" . $_SESSION["user_id"]."'";
     $result = mysqli_query($connection, $query);
@@ -80,7 +81,7 @@
             </section>
     </header>
         
-        <section class="sideContent column no-padding">
+        <section class="sideContent column scroll no-padding">
             <section class="sidebarTitle">
                 <a href="dynamicList.php"> <img src="images/leftArrow.svg" alt="back"></a>
                 <?php echo '<img class="plantIcon" src="images/'.$plant["type_name"].'.svg" alt="back">' ?>
@@ -95,7 +96,7 @@
             </section>
             <section class="object">
                 <section class="objectImage">
-                    <img src="images/Ripe-eggplant.jpg" alt="live photo">
+                    <img src="images/<?php echo $plant["image"]?>" alt="live photo">
                 </section>
                 <section >
                     <form class="objectContent" action="item.php" method="post">
@@ -121,12 +122,13 @@
                 <!-- <div class="alert alert-success w-75 hide" role="alert">
                     Plant removed successfuly!
                 </div> -->
-                <section class="objectButtons">
-                <?php echo '<a href="item.php?plantCell=' . $plant["cell"] . '" class="btn btn-danger btn-lg">Cancel</a>' ?>
+                <section class="row d-flex justify-content-center">
+                    <div class="col-5 d-flex justify-content-center">
+                <?php echo '<a href="item.php?plantCell=' . $plant["cell"] . '" class="btn btn-danger btn-lg">Cancel</a>' ?></div>
                         <?php echo '<input type="hidden" name="plantId" value="'.$plant["plant_id"].'">' ?>
                         <input type="hidden" name="action" value="update">
                         <?php echo '<input type="hidden" name="plantCell" value="'.$plant["cell"].'">' ?>
-                        <button type="submit" id="harvestBtn" class="btn btn-success btn-lg">Save</button>
+                        <div class="col-5 d-flex justify-content-center"><button type="submit" id="harvestBtn" class="btn btn-success btn-lg">Save</button></div>
                     </section>
                 </form>
             </section>

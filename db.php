@@ -1,6 +1,4 @@
 <?php
-include "config.php";
-
 $dbhost = "182.50.133.173";
 $dbuser = "studDB21a";
 $dbpass = "stud21DB1!";

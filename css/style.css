@@ -388,20 +388,39 @@ main {
     justify-content: space-between;
 }
 
+.allPlantList .name {
+    width: 30%;
+    font-weight: 400 !important;
+    font-size: 1.1em;
+}
+
+.allPlantList .info {
+    width: 15%;
+}
+
 .plantListItem > a{
     height: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    font-weight: 300;
+    font-size: 1em;
 }
+
+.growerName{
+    color: #343a40;
+    padding-left: 20px;  
+}
+
 .plantListItem > a:hover {
     color: black;
     border-radius: 5px;
     background: #cececead;
 }
 
-.plantListItem > a > img{
-    height: 100%;
+.plantListItem > a  img{
+    height: 38px;
+    margin-right: 25px;
 }
 
 .plantListName {
@@ -413,12 +432,7 @@ main {
     font-weight: 400;
 }
 
-.growerName{
-    font-weight: 300;
-    font-size: 0.9em;
-    color: #343a40;
-    padding-left: 20px;  
-}
+
 
 .plantListInfo {
     text-align: center;
@@ -1032,6 +1046,12 @@ section .plantListInfo {
     }
     .allPlantListName {
         width: 80%;
+    }
+    .allPlantList .info {
+        display: none;
+    }
+    .allPlantList .name {
+        width: 60%;
     }
 
     .homeStats {

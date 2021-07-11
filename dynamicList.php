@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <?php 
+    include "config.php";
     session_start();
     if(!$_SESSION){
-        header("Location: http://localhost/login.php");
+        header("Location: ".$URL."/login.php");;
     }
 ?>
 <head>

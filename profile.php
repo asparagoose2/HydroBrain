@@ -2,9 +2,10 @@
 <html lang="en">
 <?php 
     include "db.php";
+    include "config.php";
     session_start();
     if(!$_SESSION){
-        header("Location: http://localhost/login.php");
+        header("Location: ".$URL."/login.php");
     }
     if(isset($_GET["update"])) {
         $query = 'update tb_users_212 set first_name="'.$_POST["fName"].'", last_name="'.$_POST["lName"].'", email="'.$_POST["email"].'", location="'.$_POST["location"].'" where user_id='.$_SESSION["user_id"];

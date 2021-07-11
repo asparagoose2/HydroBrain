@@ -3,7 +3,7 @@ var toggleLikes = function (action, plantid) {
     console.log(action);
     console.log(plantid);
     $.ajax({
-      url: "http://localhost/alterLikes.php",
+      url: "http://se.shenkar.ac.il/students/2020-2021/web1/dev_212/alterLikes.php",
       method: "post",
       data: { action: action, plant_id: plantid },
     }).then((res) => {

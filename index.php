@@ -1,16 +1,22 @@
 <?php 
-    include "db.php";  
+    include "db.php";
+    include "config.php";  
     session_start();
     header("Set-Cookie: SameSite=Lax;");
     if(!$_SESSION){
-        header("Location:".$URL."login.php");
+        header("Location:".$URL."/login.php");
     }
     $query  = "SELECT * FROM tb_tasks_212 WHERE user_id='".$_SESSION["user_id"]."'";
     $result = mysqli_query($connection, $query);
-    $tasks = mysqli_fetch_all($result, MYSQLI_BOTH);
+    $tasks = array();
 
+    if(mysqli_num_rows($result) > 0) {
+        while($row = mysqli_fetch_assoc($result)) {
+            array_push($tasks,$row);
+        }
+    }
      
-    $query  = "select *, (select count(*) from tb_plants_212 where user_id ='".$_SESSION["user_id"]."') as total_plants, (select count(*) from tb_plants_212 where user_id ='".$_SESSION["user_id"]."' and tb_plants_212.status = 1) as ready_plants from tb_gardens_212 g";
+    $query  = "select *, (select count(*) from tb_plants_212 where user_id ='".$_SESSION["user_id"]."') as total_plants, (select count(*) from tb_plants_212 where user_id ='".$_SESSION["user_id"]."' and tb_plants_212.status = 'ready') as ready_plants from tb_gardens_212 where user_id =".$_SESSION["user_id"];
     $result = mysqli_query($connection, $query);
     $stats = mysqli_fetch_array($result, MYSQLI_BOTH);
     

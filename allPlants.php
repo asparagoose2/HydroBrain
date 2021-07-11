@@ -1,10 +1,11 @@
 <?php
 // include "config.php";
 include "db.php";
+include "config.php";
 
 session_start();
 if(!$_SESSION){
-    header("Location: http://localhost/login.php");
+    header("Location: ".$URL."/login.php");
 }
 
 $query_plants = "SELECT *
@@ -15,7 +16,13 @@ from tb_users_212
            on tb_plant_type_212.type_id = tb_plants_212.type_id " . (isset($_GET['sort'])? "order by ".$_GET['sort']:"");
 
            $result = mysqli_query($connection,$query_plants);
-           $plants = mysqli_fetch_all($result,MYSQLI_BOTH);
+           $plants = array();
+
+           if(mysqli_num_rows($result) > 0) {
+            while($row = mysqli_fetch_assoc($result)) {
+                array_push($plants,$row);
+            }
+        }
            if (!$plants) {
             die("DB query faild");
         }
@@ -30,7 +37,12 @@ if(isset($_GET['filter'])){
         inner join tb_plant_type_212
             on tb_plant_type_212.type_id = tb_plants_212.type_id where status='sick'";
             $result = mysqli_query($connection,$query_filter);
-            $plants = mysqli_fetch_all($result,MYSQLI_BOTH);
+            $plants = array();
+            if(mysqli_num_rows($result) > 0) {
+                while($row = mysqli_fetch_assoc($result)) {
+                    array_push($plants,$row);
+                }
+            }
 } 
         
 else if($_GET['filter']=='ready'){
@@ -41,7 +53,12 @@ else if($_GET['filter']=='ready'){
         inner join tb_plant_type_212
             on tb_plant_type_212.type_id = tb_plants_212.type_id where status='ready'";
             $result = mysqli_query($connection,$query_filter);
-            $plants = mysqli_fetch_all($result,MYSQLI_BOTH);
+            $plants = array();
+            if(mysqli_num_rows($result) > 0) {
+                while($row = mysqli_fetch_assoc($result)) {
+                    array_push($plants,$row);
+                }
+            }
            
         }  
         
@@ -75,7 +92,13 @@ else if($_GET['filter']=='ready'){
                    on tb_plant_type_212.type_id = tb_plants_212.type_id
                    where (status like '%".$search."%' or plant_name like '%".$search."%' or first_name like '%".$search."%' or last_name like '%".$search."%')";
             $result = mysqli_query($connection,$query);
-            $plants = mysqli_fetch_all($result,MYSQLI_BOTH);
+            $plants = array();
+            if(mysqli_num_rows($result) > 0) {
+                while($row = mysqli_fetch_assoc($result)) {
+                    array_push($plants,$row);
+                }
+            }
+            
         }
 	
 ?>    
@@ -168,10 +191,11 @@ else if($_GET['filter']=='ready'){
             <?php
             echo '<ul class="plantsList ">';
             foreach($plants as &$plant ) {  
-                echo     '<li class="plantListItem allPlantList"><a  href="item.html?itemID=7">';
-                echo     '<img src="images/'.$plant["type_name"].'.svg"' .'alt="beet">';
-                echo     '<span class="plantListName allPlantListName">'.$plant["plant_name"]. '</span>';
-                echo     '<section class="plantListInfo" id="shoval" ><span>'.$plant["status"].'&nbsp &nbsp &nbsp</span><span>'.$timestamp1 =(floor(((strtotime(date("Y-m-d H:i:s")))- (strtotime($plant["planting_time"]))) / 60 / 60 / 24)).' days ago'.'</span></section>';
+                echo     '<li class="plantListItem allPlantList"><a  href="#a">';
+                echo     '<span class="name"> <img src="images/'.$plant["type_name"].'.svg"' .'alt="beet">';
+                echo     ucfirst($plant["plant_name"]). '</span>';
+                echo     '<span class="info">'.ucfirst($plant["status"]).'&nbsp &nbsp &nbsp</span><span class="info">'.$timestamp1 =(floor(((strtotime(date("Y-m-d H:i:s")))- (strtotime($plant["planting_time"]))) / 60 / 60 / 24)).' days ago'.'</span>';
+                echo     '<span class="info">'.$plant["value"].'&nbsp $/Kg </span>';
                 echo     '<span class="growerName">'.$plant["first_name"].'&nbsp'.$plant["last_name"].'</span></a>';       
                 echo     '<button  onclick="likeOnClick(this)" id='.$plant["plant_id"].' class="likeButton like'.(in_array($plant["plant_id"],$likes)?" liked":"").'"> <i class="fa fa-thumbs-up"></i></button></li>';
             }

@@ -1,8 +1,9 @@
 <?php 
     include "db.php";
+    include "config.php";
     session_start();
     if(!$_SESSION){
-        header("Location: http://localhost/login.php");
+        header("Location: ".$URL."/login.php");;
     }
     if(isset($_POST["action"])) {
         if($_POST["action"]=="update") {
@@ -47,7 +48,7 @@
         $plant = mysqli_fetch_array($result, MYSQLI_BOTH);
     }
     if(!$plant) {
-        header("Location:".$URL."dynamicList.php");
+        header("Location:".$URL."/dynamicList.php");
     }
 
     $query  = "select first_name, count(*) num_of_likes from tb_likes_212 l inner join tb_users_212 u on l.user_id = u.user_id group by plant_id having plant_id=".$plant["plant_id"];
@@ -56,6 +57,7 @@
     
     $query  = "select first_name, last_name from tb_likes_212 l inner join tb_users_212 u on l.user_id = u.user_id where plant_id=".$plant["plant_id"];
     $likers = mysqli_query($connection, $query);
+
 ?>
 
 <!DOCTYPE html>
@@ -116,7 +118,7 @@
             </section>
     </header>
         
-    <section class="sideContent column no-padding">
+    <section class="sideContent column scroll no-padding">
         <section class="sidebarTitle">
             <a href="dynamicList.php"> <img src="images/leftArrow.svg" alt="back"></a>
             <?php echo '<img class="plantIcon" src="images/'.$plant["type_name"].'.svg" alt="back">' ?>
@@ -148,14 +150,14 @@
                     echo "No one.. 😔" ;
                     } else {
                     $row = mysqli_fetch_assoc($likers);
+
                     if($likes["num_of_likes"]<2) { // if only one like, just write user's first name
                         
-                        echo $row["first_name"]; 
                     } else { // more than 1 like, write user's forst name and write how many more like there are
                         
                         echo $row["first_name"]." and ".'
                         <div style="display: inline-block;" class="dropdown">
-                        <a type="button" data-toggle="dropdown" href="#">'.$likes["num_of_likes"]-1 . " more </a>  ";
+                        <a type="button" data-toggle="dropdown" href="#">'.($likes["num_of_likes"]-1) . " more </a>  ";
                     }
                 } 
                 ?>
@@ -175,10 +177,10 @@
             </div>
             <section class="objectButtons">
             <?php echo '<a href="editItem.php?plantCell='.$plant["cell"].'" class="btn btn-dark btn-lg">Edit</a>'; ?> 
-                <form action="item.php" method="post"">
+                <form action="item.php" method="post">
                 <?php echo '<input type="hidden" name="plant_id" value="'.$plant["plant_id"].'">'; ?>
                     <input type="hidden" name="action" value="delete">
-                    <button type="submit" id="harvestBtn" class="btn btn-success btn-lg" <?php echo $plant["status"] == "ready"?"":"disabled" ?> >Harvest</button>
+                    <button type="submit" id="harvestBtn" class="btn btn-success btn-lg" <?php echo strtolower($plant["status"]) == "ready"?"":"disabled" ?> >Harvest</button>
                 </form>
             </section>
         </section>

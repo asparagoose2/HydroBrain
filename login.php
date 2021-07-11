@@ -2,19 +2,11 @@
 <html lang="en">
 
 <?php 
+include "config.php";
+include "db.php";
+
 session_start();
-$dbhost = "182.50.133.173";
-$dbuser = "studDB21a";
-$dbpass = "stud21DB1!";
-$dbname = "studDB21a";
 
-$URL = "http://localhost/";
-
-$connection = mysqli_connect($dbhost,$dbuser,$dbpass,$dbname);
-
-if(mysqli_connect_errno()) {
-    die("DB connection failed: ".mysqli_connect_error()."(".mysqli_connect_errno().")");
-}
 
 if(!empty($_POST["email"])) {
     $query  = "SELECT * FROM tb_users_212 WHERE email='".$_POST["email"]."' and password='". $_POST["pass"]."'";
@@ -30,7 +22,7 @@ if(!empty($_POST["email"])) {
         $_SESSION["user_img"] = $row["profile_pic"];
         $_SESSION["system_status"] = "Online";
         $_SESSION["time_zone"] = $_POST["timeZone"];
-        header("Location:".$URL."index.php");
+        header("Location:".$URL."/index.php");
     } else {
         $message = "authentication failed!";
     }
@@ -61,7 +53,7 @@ if(!empty($_POST["email"])) {
             </div>
 
             <!-- Login Form -->
-            <form action="#" method="POST">
+            <?php echo '<form action="login.php" method="POST">'; ?>
                 <input type="email" id="login" class="fadeIn second" name="email" placeholder="email">
                 <input type="password" id="password" class="fadeIn third" name="pass" placeholder="password">
                 <input type="submit" class="fadeIn fourth" value="Log In">

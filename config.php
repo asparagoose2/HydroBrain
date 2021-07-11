@@ -1,2 +1,4 @@
 <?php
-define("URL","http://localhost/");
+// define("URL","http://se.shenkar.ac.il/students/2020-2021/web1/dev_212/");
+
+$URL = "http://se.shenkar.ac.il/students/2020-2021/web1/dev_212";

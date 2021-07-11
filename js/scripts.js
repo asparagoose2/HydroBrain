@@ -5,7 +5,7 @@ var urlSearchParams = new URLSearchParams(window.location.search);
 var params = Object.fromEntries(urlSearchParams.entries());
 
 $.ajax({
-  url: "http://localhost/getPlantsList.php",
+  url: "http://se.shenkar.ac.il/students/2020-2021/web1/dev_212/getPlantsList.php",
   method: "get",
   dataType: "JSON",
 }).then((res) => {
@@ -141,7 +141,7 @@ var renderList = function (sort, searchKey) {
     img.attr("alt", plant.type);
     listItem.append(img);
     var span = $('<span class="plantListName"></span>');
-    span.text(plant.name ? plant.plant_name : plant.type_name);
+    span.text(plant.plant_name ? plant.plant_name : plant.type_name);
     span.text(span.text().charAt(0).toUpperCase() + span.text().slice(1));
     listItem.append(span);
     span = $('<span class="plantListInfo"></span>');
@@ -188,7 +188,7 @@ var toggleLikes = function (action, plantid) {
   console.log(action);
   console.log(plantid);
   $.ajax({
-    url: "http://localhost/alterLikes.php",
+    url: "http://se.shenkar.ac.il/students/2020-2021/web1/dev_212/alterLikes.php",
     method: "post",
     data: { action: action, plant_id: plantid },
   }).then((res) => {

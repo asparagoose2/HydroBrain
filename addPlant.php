@@ -1,15 +1,19 @@
 <?php 
     include "db.php";
+    include "config.php";
     session_start();
     if(!$_SESSION){
-        header("Location: http://localhost/login.php");
+        header("Location: ".$URL."/login.php");
     }
     $query  = "select * from tb_plant_type_212";
     $result = mysqli_query($connection, $query);
-    $types = mysqli_fetch_all($result, MYSQLI_BOTH);
-    if(!$types) {
-        header("Location:".$URL."dynamicList.php");
+    $types = array();
+    if(mysqli_num_rows($result) > 0) {
+        while($row = mysqli_fetch_assoc($result)) {
+            array_push($types,$row);
+        }
     }
+    
     $query  = "select cell from tb_plants_212 where user_id='" . $_SESSION["user_id"]."'";
     $result = mysqli_query($connection, $query);
     $emptyCells = range(1,50);
@@ -80,7 +84,7 @@
                 </div>
             </section>
     </header>
-        <section class="sideContent column no-padding">
+        <section class="sideContent column scroll no-padding">
             <section class="sidebarTitle">
                 <a href="dynamicList.php"> <img src="images/leftArrow.svg" alt="back"></a>
                 <img class="plantIcon" id="plantIcon" src="images/generic-plant.svg" alt="back">
