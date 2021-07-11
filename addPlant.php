@@ -83,7 +83,7 @@
         <section class="sideContent column no-padding">
             <section class="sidebarTitle">
                 <a href="dynamicList.php"> <img src="images/leftArrow.svg" alt="back"></a>
-                <img class="plantIcon" id="plantIcon" src="images/strawberry.svg" alt="back">
+                <img class="plantIcon" id="plantIcon" src="images/generic-plant.svg" alt="back">
                 <h1>Add Plant</h1>
                 <a id="sideBarBtn"><img src="images/x.svg"></a>
             </section>
@@ -94,7 +94,7 @@
                 </ol>
             </section>
             <section class="objectImage">
-                <img class="objectImage" id="plantPhoto" src="images/Strawberries.png" alt="live photo"> <br>
+                <img class="objectImage" id="plantPhoto" src="images/genericPlants.jpg" alt="live photo"> <br>
                 <p><b>Lorem ipsum dolor sit amet, consectetur
                         adipiscing elit. Nulla quam velit, vulputate eu
                         pharetra nec, mattis ac neque. Duis vulputate

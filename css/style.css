@@ -299,6 +299,11 @@ span {
     color:white;
 }
 
+.user img {
+    width: 34px;
+    border-radius: 1000px;
+}
+
 .user:hover {
     color: rgb(218, 209, 209);
 }
@@ -307,6 +312,8 @@ span {
     display: inline-block;
     margin-right: 3em;
 }
+
+
 
 .circle {
     border-radius: 50%;

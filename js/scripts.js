@@ -97,7 +97,7 @@ var renderList = function (sort, searchKey) {
     switch (sort) {
       case "type":
         data.sort((a, b) => {
-          return a["type_name"].localeCompare(b["type_name"]);
+          return (a["type_name"].toUpperCase()).localeCompare((b["type_name"]).toUpperCase());
         });
         break;
       case "age":
@@ -110,23 +110,23 @@ var renderList = function (sort, searchKey) {
         break;
       case "ready":
         data = data.filter((d) => {
-          return d["status"] == "ready";
+          return (d["status"].toUpperCase()) == "READY";
         });
         break;
       case "sick":
         data = data.filter((d) => {
-          return d["status"] == "sick";
+          return d["status"].toUpperCase() == "SICK";
         });
         break;
       case "search":
         data = data.filter((d) => {
-          return (
+          return ((
             d["status"] +
             " " +
             d["plant_name"] +
             " " +
             d["type_name"]
-          ).includes(searchKey);
+          ).toUpperCase()).includes(searchKey.toUpperCase());
         });
         break;
     }

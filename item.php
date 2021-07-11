@@ -114,85 +114,85 @@
                     </div>
                 </div>
             </section>
-        </header>
+    </header>
         
-        <section class="sideContent column no-padding">
-            <section class="sidebarTitle">
-                <a href="dynamicList.php"> <img src="images/leftArrow.svg" alt="back"></a>
-                <?php echo '<img class="plantIcon" src="images/'.$plant["type_name"].'.svg" alt="back">' ?>
-                <h1 ><?php echo ucfirst($plant["plant_name"]?$plant["plant_name"]:$plant["type_name"]) ?></h1>
-                <a id="sideBarBtn"><img src="images/x.svg" alt=""></a>
+    <section class="sideContent column no-padding">
+        <section class="sidebarTitle">
+            <a href="dynamicList.php"> <img src="images/leftArrow.svg" alt="back"></a>
+            <?php echo '<img class="plantIcon" src="images/'.$plant["type_name"].'.svg" alt="back">' ?>
+            <h1 ><?php echo ucfirst($plant["plant_name"]?$plant["plant_name"]:$plant["type_name"]) ?></h1>
+            <a id="sideBarBtn"><img src="images/x.svg" alt=""></a>
+        </section>
+        <section class="breadcrumbsSection">
+            <ol class="breadcrumbs">
+                <li class="breadcrumbsItem"><a href="list.html">plants</a></li>
+                <li class="breadcrumbsItem"><?php echo ucfirst($plant["plant_name"]?$plant["plant_name"]:$plant["type_name"]) ?></li>
+            </ol>
+        </section>
+        <section class="object">
+            <section class="objectImage">
+                <?php echo '<img src="images/'.$plant["image"].'" alt="live photo">'; ?>
             </section>
-            <section class="breadcrumbsSection">
-                <ol class="breadcrumbs">
-                    <li class="breadcrumbsItem"><a href="list.html">plants</a></li>
-                    <li class="breadcrumbsItem"><?php echo ucfirst($plant["plant_name"]?$plant["plant_name"]:$plant["type_name"]) ?></li>
-                </ol>
-            </section>
-            <section class="object">
-                <section class="objectImage">
-                    <img src="images/Ripe-eggplant.jpg" alt="live photo">
-                </section>
-                <section class="objectContent">
-                    <span><label>Plant Type:</label><br><?php echo ucfirst($plant["type_name"])  ?></span>
-                    <span><label>Nickname:</label><br><?php echo ucfirst($plant["plant_name"]?$plant["plant_name"]:$plant["type_name"]) ?></span>
-                    <span><label>Location:</label><br>Cell #<?php echo $plant["cell"] ?></span>
-                    <span><label>Value:</label><br><?php echo $plant["value"] ?> $/kg</span>
-                    <span><label>Planted on:</label><br><?php echo date("d/m/Y",strtotime($plant["planting_time"])) ?></span>
-                    <span><label>Age:</label><br><?php echo floor((time()-strtotime($plant["planting_time"]))/(60*60*24))." days old" ?></span>
-                    <span><label>Status:</label><br><?php echo ucfirst($plant["status"]) ?></span> 
-                    <span><label>Liked by:  <br> </label> 
-                    <!-- Calculate Number Of Likes -->
-                    <?php  
-                    if(!$likes) {
-                        echo "No one.. 😔" ;
-                     } else {
-                        $row = mysqli_fetch_assoc($likers);
-                        if($likes["num_of_likes"]<2) { // if only one like, just write user's first name
-                         
-                            echo $row["first_name"]; 
-                        } else { // more than 1 like, write user's forst name and write how many more like there are
-                            
-                            echo $row["first_name"]." and ".'
-                            <div style="display: inline-block;" class="dropdown">
-                            <a type="button" data-toggle="dropdown" href="#">'.$likes["num_of_likes"]-1 . " more </a>  ";
-                        }
-                    } 
-                    ?>
-                    <!-- Make a dropdown to list all the other likers names -->
-                    <div class="dropdown-menu" style="margin-top: 10px; max-height: 200px;overflow-y: auto;">
-                    <?php while($row = mysqli_fetch_assoc($likers)) {
+            <section class="objectContent">
+                <span><label>Plant Type:</label><br><?php echo ucfirst($plant["type_name"])  ?></span>
+                <span><label>Nickname:</label><br><?php echo ucfirst($plant["plant_name"]?$plant["plant_name"]:$plant["type_name"]) ?></span>
+                <span><label>Location:</label><br>Cell #<?php echo $plant["cell"] ?></span>
+                <span><label>Value:</label><br><?php echo $plant["value"] ?> $/kg</span>
+                <span><label>Planted on:</label><br><?php echo date("d/m/Y",strtotime($plant["planting_time"])) ?></span>
+                <span><label>Age:</label><br><?php echo floor((time()-strtotime($plant["planting_time"]))/(60*60*24))." days old" ?></span>
+                <span><label>Status:</label><br><?php echo ucfirst($plant["status"]) ?></span> 
+                <span><label>Liked by:  <br> </label> 
+                <!-- Calculate Number Of Likes -->
+                <?php  
+                if(!$likes) {
+                    echo "No one.. 😔" ;
+                    } else {
+                    $row = mysqli_fetch_assoc($likers);
+                    if($likes["num_of_likes"]<2) { // if only one like, just write user's first name
+                        
+                        echo $row["first_name"]; 
+                    } else { // more than 1 like, write user's forst name and write how many more like there are
+                        
+                        echo $row["first_name"]." and ".'
+                        <div style="display: inline-block;" class="dropdown">
+                        <a type="button" data-toggle="dropdown" href="#">'.$likes["num_of_likes"]-1 . " more </a>  ";
+                    }
+                } 
+                ?>
+                <!-- Make a dropdown to list all the other likers names -->
+                <div class="dropdown-menu" style="margin-top: 10px; max-height: 200px;overflow-y: auto;">
+                <?php while($row = mysqli_fetch_assoc($likers)) {
 
-                            echo '<a class="dropdown-item" href="#">'.$row["first_name"]." ".$row["last_name"].'</a>';
-                        }
-                    ?> 
-                    </div>
-                </div></span>
-                    
-                </section>
-                <div class="alert alert-success w-75 <?php echo isset($update)?"":"hide" ?>" role="alert">
-                    <?php echo $update? $update : "" ?>
+                        echo '<a class="dropdown-item" href="#">'.$row["first_name"]." ".$row["last_name"].'</a>';
+                    }
+                ?> 
                 </div>
-                <section class="objectButtons">
-                <?php echo '<a href="editItem.php?plantCell='.$plant["cell"].'" class="btn btn-dark btn-lg">Edit</a>'; ?> 
-                    <form action="item.php" method="post"">
-                    <?php echo '<input type="hidden" name="plant_id" value="'.$plant["plant_id"].'">'; ?>
-                        <input type="hidden" name="action" value="delete">
-                        <button type="submit" id="harvestBtn" class="btn btn-success btn-lg" <?php echo $plant["status"] == "ready"?"":"disabled" ?> >Harvest</button>
-                    </form>
-                </section>
+            </div></span>
+                
+            </section>
+            <div class="alert alert-success w-75 <?php echo isset($update)?"":"hide" ?>" role="alert">
+                <?php echo $update? $update : "" ?>
+            </div>
+            <section class="objectButtons">
+            <?php echo '<a href="editItem.php?plantCell='.$plant["cell"].'" class="btn btn-dark btn-lg">Edit</a>'; ?> 
+                <form action="item.php" method="post"">
+                <?php echo '<input type="hidden" name="plant_id" value="'.$plant["plant_id"].'">'; ?>
+                    <input type="hidden" name="action" value="delete">
+                    <button type="submit" id="harvestBtn" class="btn btn-success btn-lg" <?php echo $plant["status"] == "ready"?"":"disabled" ?> >Harvest</button>
+                </form>
             </section>
         </section>
-        <main>
-        <section class="mapContainer column">
-            <section class="map">
-                <div class="loader">
-                    <div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
-                </div>
-            </section>
+    </section>
+    <main>
+    <section class="mapContainer column">
+        <section class="map">
+            <div class="loader">
+                <div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+            </div>
         </section>
-        </main>
-        <div class="clear"></div>
+    </section>
+    </main>
+    <div class="clear"></div>
     </section>
     <script src="js/scripts.js"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
