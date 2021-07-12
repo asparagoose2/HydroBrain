@@ -886,6 +886,10 @@ section .plantListInfo {
 .userNameB a {
     font-size: 20px;
 }
+.userNameB a img {
+    width: 34px;
+    border-radius: 1000px;
+}
   
 .sidenav a:hover {
     color: #f1f1f1;

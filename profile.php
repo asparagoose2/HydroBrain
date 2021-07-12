@@ -5,7 +5,7 @@
     include "config.php";
     session_start();
     if(!$_SESSION){
-        header("Location: ".$URL."/login.php");
+        header("Location: http://localhost/login.php");
     }
     if(isset($_GET["update"])) {
         $query = 'update tb_users_212 set first_name="'.$_POST["fName"].'", last_name="'.$_POST["lName"].'", email="'.$_POST["email"].'", location="'.$_POST["location"].'" where user_id='.$_SESSION["user_id"];
@@ -20,11 +20,16 @@
             $update_satus = array("status" => "danger", "msg" => "Oh oh... Changes Not Saved!" );
         }
     }
+    if(isset($_GET["delete"]) && $_GET["delete"] == $_SESSION["user_id"]) {
+        $query = 'delete from tb_users_212 where user_id='.$_SESSION["user_id"];
+        $result = mysqli_query($connection, $query);
+        session_destroy();
+        header("location: ".$URL."/login.php");
+    }
     
 ?>
 <head>
     <meta charset="UTF-8">
-    <link rel="icon" type="image/png" href="images/favicon.png"/>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -197,7 +202,7 @@
                                     <div class="col-sm-12 d-flex justify-content-around ">
                                         <a class="btn btn-dark" href="profile.php?edit">Edit
                                             Profile</a>
-                                        <a class="btn btn-info btn-danger" href="#">Delete
+                                        <a class="btn btn-info btn-danger" href="profile.php?delete='.$_SESSION["user_id"].'">Delete
                                             Profile</a>
                                     </div>
                                 </div>
@@ -213,9 +218,10 @@
         </div>
     </section>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="js/main.js"></script>
 </body>
-</html>
 
-<?php
+</html>
+<?php 
     mysqli_close($connection);
 ?>
