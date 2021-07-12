@@ -93,7 +93,7 @@
             </section>
             <section class="breadcrumbsSection">
                 <ol class="breadcrumbs">
-                    <li class="breadcrumbsItem"><a href="list.html">plants</a></li>
+                    <li class="breadcrumbsItem"><a href="dynamicList.php">plants</a></li>
                     <li class="breadcrumbsItem">Add Plant</li>
                 </ol>
             </section>

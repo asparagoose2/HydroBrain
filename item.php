@@ -127,7 +127,7 @@
         </section>
         <section class="breadcrumbsSection">
             <ol class="breadcrumbs">
-                <li class="breadcrumbsItem"><a href="list.html">plants</a></li>
+                <li class="breadcrumbsItem"><a href="dynamicList.php">plants</a></li>
                 <li class="breadcrumbsItem"><?php echo ucfirst($plant["plant_name"]?$plant["plant_name"]:$plant["type_name"]) ?></li>
             </ol>
         </section>
